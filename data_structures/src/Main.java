@@ -1,4 +1,5 @@
 import Stacks.StackSamples;
+import Stacks.UndoRedoManager;
 
 public class Main {
     public static void main(String[] args) {
@@ -6,5 +7,8 @@ public class Main {
 
         StackSamples stackSamples = new StackSamples();
         stackSamples.SampleOne();
+
+        UndoRedoManager undoRedo = new UndoRedoManager();
+        undoRedo.SampleUsage();
     }
 }

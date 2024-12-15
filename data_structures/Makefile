@@ -6,7 +6,7 @@ MAIN_CLASS = Main
 # Compile the Java source files
 compile:
 	mkdir -p $(BIN_DIR)
-	javac -d $(BIN_DIR) $(SRC_DIR)/*.java
+	javac -d $(BIN_DIR) $(SRC_DIR)/*.java $(SRC_DIR)/*/*.java
 
 # Run the program
 run: compile
