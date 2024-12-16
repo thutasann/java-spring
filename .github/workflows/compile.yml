@@ -1,0 +1,34 @@
+name: Compile Java Projects
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        directory: [fundamentals, data_structures]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+
+    - name: Compile ${{ matrix.directory }}
+      working-directory: ${{ matrix.directory }}
+      run: make compile
+
+    - name: Upload compiled files
+      uses: actions/upload-artifact@v3
+      with:
+        name: ${{ matrix.directory }}-compiled
+        path: ${{ matrix.directory }}/bin/
