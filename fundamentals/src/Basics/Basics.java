@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Basics {
     public void SwapVariables() {
-        System.out.println("==> Swap Variables");
+        System.out.println("\n==> Swap Variables");
 
         String x = "water";
         String y = "Kool-aid";
@@ -19,7 +19,7 @@ public class Basics {
     }
 
     public void RandomNumber() {
-        System.out.println("==> Random Number");
+        System.out.println("\n==> Random Number");
 
         Random random = new Random();
         int x = random.nextInt();
@@ -27,7 +27,7 @@ public class Basics {
     }
 
     public void ForLoop() {
-        System.out.println("==> For Loop ");
+        System.out.println("\n==> For Loop ");
 
         for (int i = 5; i >= 0; i--) {
             System.out.println(i);

@@ -1,3 +1,4 @@
+import Basics.ArraySamples;
 import Basics.Basics;
 
 public class Main {
@@ -7,5 +8,9 @@ public class Main {
         Basics basics = new Basics();
         basics.SwapVariables();
         basics.ForLoop();
+
+        ArraySamples arraySamples = new ArraySamples();
+        arraySamples.SampleOne();
+        arraySamples.TwoDArrays();
     }
 }
