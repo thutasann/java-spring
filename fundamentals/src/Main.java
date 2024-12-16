@@ -6,5 +6,6 @@ public class Main {
 
         Basics basics = new Basics();
         basics.SwapVariables();
+        basics.ForLoop();
     }
 }
