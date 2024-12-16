@@ -1,5 +1,6 @@
 import Basics.ArraySamples;
 import Basics.Basics;
+import Basics.DateTimeSamples;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,5 +13,8 @@ public class Main {
         ArraySamples arraySamples = new ArraySamples();
         arraySamples.SampleOne();
         arraySamples.TwoDArrays();
+
+        DateTimeSamples dateTimeSamples = new DateTimeSamples();
+        dateTimeSamples.SamplesOne();
     }
 }
