@@ -8,7 +8,7 @@ public class StackSamples {
      * @apiNote - This is stack sample usage one
      */
     public void SampleOne() {
-        System.out.println("\n===> Hello From Stack Sample One");
+        System.out.println("\n===> Stack Sample One");
         Stack<String> stack = new Stack<String>();
 
         stack.push("Minecraft");

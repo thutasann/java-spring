@@ -1,3 +1,5 @@
+import Queues.PriorityQueueSamples;
+import Queues.QueueSamples;
 import Stacks.StackSamples;
 import Stacks.UndoRedoManager;
 
@@ -10,5 +12,11 @@ public class Main {
 
         UndoRedoManager undoRedo = new UndoRedoManager();
         undoRedo.SampleUsage();
+
+        QueueSamples queueSamples = new QueueSamples();
+        queueSamples.SampleOne();
+
+        PriorityQueueSamples priorityQueueSamples = new PriorityQueueSamples();
+        priorityQueueSamples.SampleOne();
     }
 }
