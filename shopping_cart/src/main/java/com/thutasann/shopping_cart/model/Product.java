@@ -2,7 +2,6 @@ package com.thutasann.shopping_cart.model;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.PrimitiveIterator;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
