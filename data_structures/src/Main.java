@@ -23,5 +23,6 @@ public class Main {
         LinkedListSamples linkedListSamples = new LinkedListSamples();
         linkedListSamples.SinglyLinkedList();
         linkedListSamples.OfferPollSample();
+        linkedListSamples.BrowserHistorySample();
     }
 }

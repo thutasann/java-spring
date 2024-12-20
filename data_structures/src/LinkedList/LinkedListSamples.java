@@ -30,4 +30,17 @@ public class LinkedListSamples {
         System.out.println("Index of F --> " + linkedList.indexOf("F"));
         System.out.println(linkedList);
     }
+
+
+    public void BrowserHistorySample() {
+        System.out.println("\n===> Browser History Sample");
+
+        BrowserHistory browser = new BrowserHistory();
+        browser.visit("google.com");
+        browser.visit("youtube.com");
+        browser.visit("github.com");
+        browser.back();
+        browser.back();
+        browser.forward();
+    }
 }
