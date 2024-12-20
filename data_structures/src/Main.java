@@ -1,3 +1,4 @@
+import LinkedList.LinkedListSamples;
 import Queues.PriorityQueueSamples;
 import Queues.QueueSamples;
 import Stacks.StackSamples;
@@ -18,5 +19,9 @@ public class Main {
 
         PriorityQueueSamples priorityQueueSamples = new PriorityQueueSamples();
         priorityQueueSamples.SampleOne();
+
+        LinkedListSamples linkedListSamples = new LinkedListSamples();
+        linkedListSamples.SinglyLinkedList();
+        linkedListSamples.OfferPollSample();
     }
 }

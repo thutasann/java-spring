@@ -2,9 +2,19 @@ package com.thutasann.shopping_cart.service.product;
 
 import java.util.List;
 
-import com.thutasann.shopping_cart.model.Product;
+import org.springframework.stereotype.Service;
 
+import com.thutasann.shopping_cart.exceptions.ResourceNotFoundException;
+import com.thutasann.shopping_cart.model.Product;
+import com.thutasann.shopping_cart.repository.ProductRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
 public class ProductService implements IProductService {
+
+    private final ProductRepository productRepository;
 
     @Override
     public Product addProduct(Product product) {
@@ -13,7 +23,7 @@ public class ProductService implements IProductService {
 
     @Override
     public Product getProductById(Long id) {
-        throw new UnsupportedOperationException("Unimplemented method 'getProductById'");
+        return productRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Product not found"));
     }
 
     @Override
@@ -38,7 +48,7 @@ public class ProductService implements IProductService {
 
     @Override
     public List<Product> getProductsByBrand(String brand) {
-        throw new UnsupportedOperationException("Unimplemented method 'getProductsByBrand'");
+        return productRepository.findByBrand(brand);
     }
 
     @Override
