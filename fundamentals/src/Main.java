@@ -1,5 +1,6 @@
 import Basics.ArraySamples;
 import Basics.Basics;
+import Basics.CopyingObjectsSample;
 import Basics.DateTimeSamples;
 
 public class Main {
@@ -16,5 +17,8 @@ public class Main {
 
         DateTimeSamples dateTimeSamples = new DateTimeSamples();
         dateTimeSamples.SamplesOne();
+
+        CopyingObjectsSample copyingObjectsSample = new CopyingObjectsSample();
+        copyingObjectsSample.SampleOne();
     }
 }
