@@ -94,6 +94,12 @@ public class ProductService implements IProductService {
         return productRepository.countByBrandAndName(brand, category);
     }
 
+    /**
+     * Create Product
+     * 
+     * @param request  - add product request
+     * @param category - category
+     */
     private Product createProduct(AddProductRequest request, Category category) {
         return new Product(
                 request.getName(),
