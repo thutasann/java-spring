@@ -3,15 +3,17 @@ package com.thutasann.shopping_cart.service.product;
 import java.util.List;
 
 import com.thutasann.shopping_cart.model.Product;
+import com.thutasann.shopping_cart.request.AddProductRequest;
+import com.thutasann.shopping_cart.request.ProductUpdateRequest;
 
 public interface IProductService {
-    Product addProduct(Product product);
+    Product addProduct(AddProductRequest product);
 
     Product getProductById(Long id);
     
     void deleteProductById(Long id);
     
-    void updateProduct(Product product, Long productId);
+    Product updateProduct(ProductUpdateRequest product, Long productId);
     
     List<Product> getAllProducts();
 
