@@ -15,7 +15,7 @@ public class TimerTaskSample {
                 System.out.println("Task is complete (Sample One)!");
             }
         };
-        timer.schedule(task, 3000);
+        timer.schedule(task, 0);
     }
 
     public void SampleTwo() {
