@@ -2,6 +2,8 @@ import Basics.ArraySamples;
 import Basics.Basics;
 import Basics.CopyingObjectsSample;
 import Basics.DateTimeSamples;
+import Basics.LambdaExamples;
+import Basics.MethodReferenceSamples;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,5 +22,16 @@ public class Main {
 
         CopyingObjectsSample copyingObjectsSample = new CopyingObjectsSample();
         copyingObjectsSample.SampleOne();
+
+        MethodReferenceSamples methodReferenceSamples = new MethodReferenceSamples();
+        methodReferenceSamples.StaticMethodReference();
+        methodReferenceSamples.InstanceMethodReference();
+        methodReferenceSamples.ArbitraryObjectMethodReferenceExample();
+
+        LambdaExamples lambdaExamples = new LambdaExamples();
+        lambdaExamples.SampleOne();
+        lambdaExamples.MultipleParams();
+        lambdaExamples.LambdaInLoop();
+        lambdaExamples.CustomFunctionInterface();
     }
 }
