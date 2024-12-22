@@ -9,6 +9,7 @@ import com.thutasann.shopping_cart.exceptions.AlreadyExistsException;
 import com.thutasann.shopping_cart.exceptions.ResourceNotFoundException;
 import com.thutasann.shopping_cart.model.Category;
 import com.thutasann.shopping_cart.repository.CategoryRepository;
+import com.thutasann.shopping_cart.utils.CacheStore;
 
 import lombok.RequiredArgsConstructor;
 
@@ -17,11 +18,21 @@ import lombok.RequiredArgsConstructor;
 public class CategoryService implements ICategoryService {
 
     private final CategoryRepository categoryRepository;
+    private final CacheStore<Long, Category> cacheStore = new CacheStore<>();
 
     @Override
     public Category getCategoryById(Long id) {
-        return categoryRepository.findById(id)
+
+        Category cachedCategory = cacheStore.get(id);
+        if (cachedCategory != null) {
+            return cachedCategory;
+        }
+
+        Category category = categoryRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Category not found"));
+
+        cacheStore.put(id, category, 600_000); // 10 minutes;
+        return category;
     }
 
     @Override
