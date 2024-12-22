@@ -18,12 +18,11 @@ import lombok.RequiredArgsConstructor;
 public class CategoryService implements ICategoryService {
 
     private final CategoryRepository categoryRepository;
-    private final CacheStore<Long, Category> cacheStore = new CacheStore<>();
+    private final CacheStore<String, Category> cacheStore = new CacheStore<>();
 
     @Override
     public Category getCategoryById(Long id) {
-
-        Category cachedCategory = cacheStore.get(id);
+        Category cachedCategory = cacheStore.get(id.toString());
         if (cachedCategory != null) {
             return cachedCategory;
         }
@@ -31,13 +30,21 @@ public class CategoryService implements ICategoryService {
         Category category = categoryRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Category not found"));
 
-        cacheStore.put(id, category, 600_000); // 10 minutes;
+        cacheStore.put(id.toString(), category, 600_000); // 10 minutes;
         return category;
     }
 
     @Override
     public Category getCategoryByName(String name) {
-        return categoryRepository.findByName(name);
+        Category cachedCategory = cacheStore.get(name);
+        if (cachedCategory != null) {
+            return cachedCategory;
+        }
+
+        Category category = categoryRepository.findByName(name);
+
+        cacheStore.put(name, category, 600_000);
+        return category;
     }
 
     @Override
