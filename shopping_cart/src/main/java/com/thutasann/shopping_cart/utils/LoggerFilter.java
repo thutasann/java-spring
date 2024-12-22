@@ -28,8 +28,16 @@ public class LoggerFilter implements Filter {
 
         long duration = System.currentTimeMillis() - startTime;
 
-        System.out.println("Request: " + httpRequest.getMethod() + " " + httpRequest.getRequestURI() +
-                " | Response Status: " + httpResponse.getStatus() +
-                " | Time Taken: " + duration + " ms");
+        // ANSI color codes
+        String resetColor = "\u001B[0m";
+        String methodColor = "\u001B[32m"; // Green
+        String uriColor = "\u001B[34m"; // Blue
+        String statusColor = httpResponse.getStatus() >= 400 ? "\u001B[31m" : "\u001B[32m"; // Red for errors, Green
+        String timeColor = duration > 500 ? "\u001B[33m" : "\u001B[32m"; // Yellow for slow responses, Green otherwise
+
+        System.out.println(methodColor + "Request: " + httpRequest.getMethod() + resetColor +
+                " " + uriColor + httpRequest.getRequestURI() + resetColor +
+                " | " + statusColor + "Response Status: " + httpResponse.getStatus() + resetColor +
+                " | " + timeColor + "Time Taken: " + duration + " ms" + resetColor);
     }
 }
