@@ -1,3 +1,4 @@
+import DynamicArrays.DynamicArraySamples;
 import LinkedList.LinkedListSamples;
 import Queues.PriorityQueueSamples;
 import Queues.QueueSamples;
@@ -28,5 +29,9 @@ public class Main {
         linkedListSamples.TaskSchedulerSample();
         linkedListSamples.PlayListManager();
         linkedListSamples.RealTimeDequeImplementation();
+
+        // ------- Dynamic Arrays
+        DynamicArraySamples dynamicArraySamples = new DynamicArraySamples();
+        dynamicArraySamples.SampleOne();
     }
 }
