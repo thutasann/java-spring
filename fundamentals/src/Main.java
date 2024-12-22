@@ -4,6 +4,7 @@ import Basics.CopyingObjectsSample;
 import Basics.DateTimeSamples;
 import Basics.LambdaExamples;
 import Basics.MethodReferenceSamples;
+import MemorizingSamples.MemorizingSamples;
 
 public class Main {
     public static void main(String[] args) {
@@ -33,5 +34,12 @@ public class Main {
         lambdaExamples.MultipleParams();
         lambdaExamples.LambdaInLoop();
         lambdaExamples.CustomFunctionInterface();
+
+        MemorizingSamples memorizingSamples = new MemorizingSamples();
+        memorizingSamples.InMemoryCacheSample();
+        memorizingSamples.ObjectPoolSample();
+        memorizingSamples.LRUCacheSample();
+        memorizingSamples.ReferenceCounterSample();
+        memorizingSamples.WeakReferenceExample();
     }
 }
