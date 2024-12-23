@@ -9,7 +9,10 @@ import OptimzationTechniques.Techniques.StringOptimization;
  * JAVA Optimization Techniques
  */
 public class OptimizationTechniques {
-    public static void main(String[] args) {
+    public void Techniques() {
+
+        System.out.println("\n=========> JAVA Optimization Techniques");
+
         StringOptimization stringOptimization = new StringOptimization();
         stringOptimization.StringBuilderUsage();
 

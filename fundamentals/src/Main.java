@@ -5,6 +5,7 @@ import Basics.DateTimeSamples;
 import Basics.LambdaExamples;
 import Basics.MethodReferenceSamples;
 import MemorizingSamples.MemorizingSamples;
+import OptimzationTechniques.OptimizationTechniques;
 
 public class Main {
     public static void main(String[] args) {
@@ -41,5 +42,8 @@ public class Main {
         memorizingSamples.LRUCacheSample();
         memorizingSamples.ReferenceCounterSample();
         memorizingSamples.WeakReferenceExample();
+
+        OptimizationTechniques optimizationTechniques = new OptimizationTechniques();
+        optimizationTechniques.Techniques();
     }
 }
