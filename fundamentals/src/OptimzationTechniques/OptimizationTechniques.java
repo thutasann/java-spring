@@ -26,11 +26,13 @@ public class OptimizationTechniques {
         LazyInitialization lazyInitialization = new LazyInitialization();
         lazyInitialization.LazyInitializationSampleOne();
 
-        MemoryLeakOptimization memoryLeak = new MemoryLeakOptimization();
-        memoryLeak.MemoryLeakAvoidance();
-
         CPUIntensiveOptimizations cpuOptimizations = new CPUIntensiveOptimizations();
         cpuOptimizations.ParallelStreamOptimization();
         cpuOptimizations.ConcurrentCollectionOptimization();
+
+        MemoryLeakOptimization memoryLeak = new MemoryLeakOptimization();
+        memoryLeak.MemoryLeakAvoidance();
+        memoryLeak.ObjectReuse();
+        memoryLeak.WeakReferenceOptimization();
     }
 }
