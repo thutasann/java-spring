@@ -1,10 +1,5 @@
 package OptimzationTechniques;
 
-import OptimzationTechniques.Techniques.CachingOptimization;
-import OptimzationTechniques.Techniques.CollectionOptimization;
-import OptimzationTechniques.Techniques.PrimitiveOptimization;
-import OptimzationTechniques.Techniques.StringOptimization;
-
 /**
  * JAVA Optimization Techniques
  */

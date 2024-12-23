@@ -1,4 +1,4 @@
-package OptimzationTechniques.Techniques;
+package OptimzationTechniques;
 
 import java.util.ArrayList;
 import java.util.List;
