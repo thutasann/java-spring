@@ -1,5 +1,8 @@
 # Java & Spring Boot Learning Path
 
-- [Fundmentals](./fundamentals/)
-- [Data Structures](./data_structures/)
-- [Spring Boot Shopping Cart](./shopping_cart/)
+| Topic                     | Source                         | Type                              |
+| ------------------------- | ------------------------------ | --------------------------------- |
+| Fundamentals              | [Source](./fundamentals)       | Java Fundamentals                 |
+| Data Structures           | [Source](./data_structures)    | Data Structures and Algorithms    |
+| Java vs Javascript        | [Source](./java_vs_javascript) | Java vs Javascript comparisons    |
+| Spring Boot Shopping Cart | [Source](./shopping_cart)      | Spring Boot, Spring Security, JWT |
