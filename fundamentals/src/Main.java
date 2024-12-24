@@ -4,6 +4,7 @@ import Basics.CopyingObjectsSample;
 import Basics.DateTimeSamples;
 import Basics.LambdaExamples;
 import Basics.MethodReferenceSamples;
+import Basics.NestedObject;
 import MemorizingSamples.MemorizingSamples;
 import OptimzationTechniques.OptimizationTechniques;
 
@@ -42,6 +43,9 @@ public class Main {
         memorizingSamples.LRUCacheSample();
         memorizingSamples.ReferenceCounterSample();
         memorizingSamples.WeakReferenceExample();
+
+        NestedObject nestedObject = new NestedObject();
+        nestedObject.SampleOne();
 
         OptimizationTechniques optimizationTechniques = new OptimizationTechniques();
         optimizationTechniques.Techniques();
