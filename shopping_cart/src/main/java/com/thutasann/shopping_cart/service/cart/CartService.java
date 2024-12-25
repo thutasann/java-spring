@@ -1,32 +1,60 @@
 package com.thutasann.shopping_cart.service.cart;
 
+import java.math.BigDecimal;
+import java.util.concurrent.atomic.AtomicLong;
+
 import org.springframework.stereotype.Service;
 
-import com.thutasann.shopping_cart.model.CartItem;
+import com.thutasann.shopping_cart.exceptions.ResourceNotFoundException;
+import com.thutasann.shopping_cart.model.Cart;
+import com.thutasann.shopping_cart.repository.CartItemRepository;
+import com.thutasann.shopping_cart.repository.CartRepository;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class CartService implements ICartItemService {
+public class CartService implements ICartService {
+
+    private final CartRepository cartRepository;
+    private final CartItemRepository cartItemRepository;
+    private final AtomicLong cartIdGenerator = new AtomicLong(0);
+
     @Override
-    public void AddItemToCart(Long cartId, Long productId, int quantity) {
-        throw new UnsupportedOperationException("Unimplemented method 'AddItemToCart'");
+    public Cart getCart(Long id) {
+        Cart cart = cartRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Cart not found"));
+        BigDecimal totalAmount = cart.getTotalAmount();
+        cart.setTotalAmount(totalAmount);
+        return cart;
+    }
+
+    @Transactional
+    @Override
+    public void clearCart(Long id) {
+        Cart cart = this.getCart(id);
+        cartItemRepository.deleteAllByCartId(id);
+        cart.getItems().clear();
+        cartRepository.deleteById(id);
     }
 
     @Override
-    public void removeItemFromCart(Long cartId, Long productId) {
-        throw new UnsupportedOperationException("Unimplemented method 'removeItemFromCart'");
+    public BigDecimal getTotalPrice(Long id) {
+        Cart cart = this.getCart(id);
+        return cart.getTotalAmount();
     }
 
     @Override
-    public void updateItemQuantity(Long cartId, Long productId, int quantity) {
-        throw new UnsupportedOperationException("Unimplemented method 'updateItemQuantity'");
+    public Long initializeNewCart() {
+        Cart newCart = new Cart();
+        Long newCartId = cartIdGenerator.incrementAndGet();
+        newCart.setId(newCartId);
+        return cartRepository.save(newCart).getId();
     }
 
     @Override
-    public CartItem getCartItem(Long cartId, Long productId) {
-        throw new UnsupportedOperationException("Unimplemented method 'getCartItem'");
+    public Cart getCartByUserId(Long userId) {
+        return cartRepository.findByUserId(userId);
     }
 
 }
