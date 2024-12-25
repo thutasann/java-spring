@@ -24,6 +24,7 @@ public class CartItemService implements ICartItemService {
 
     @Override
     public void AddItemToCart(Long cartId, Long productId, int quantity) {
+        System.out.println("cartId --> " + cartId);
         Cart cart = cartService.getCart(cartId);
         Product product = productService.getProductById(productId);
         CartItem cartItem = cart.getItems()
