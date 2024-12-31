@@ -81,3 +81,8 @@ application-*.yml
 logs/
 *.log
 tmp/
+
+# node_modules
+node_modules
+yarn.lock
+dist
