@@ -5,8 +5,6 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.hibernate.annotations.ManyToAny;
-
 import com.thutasann.shopping_cart.enums.OrderStatus;
 
 import jakarta.persistence.CascadeType;
