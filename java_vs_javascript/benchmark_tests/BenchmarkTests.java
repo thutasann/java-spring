@@ -2,12 +2,21 @@ package java_vs_javascript.benchmark_tests;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class BenchmarkTests {
 
+    /**
+     * Java vs Javascript Benchmark Test
+     * - replace the function you want to run
+     * 
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
-        BenchmarkTests.IOIntensiveSample();
+        ArraySort();
     }
 
     /**
@@ -68,6 +77,33 @@ public class BenchmarkTests {
         long end = System.nanoTime();
         System.out.println("Time: " + (end - start) / 1e6 + " ms");
 
+    }
+
+    /**
+     * Java wins
+     * 3.380916 ms
+     */
+    public static void StringConcat() {
+        System.out.println("\n==> String Concat Test");
+        StringBuilder str = new StringBuilder();
+        long startTime = System.nanoTime();
+        for (int i = 0; i < 1e5; i++) {
+            str.append("a");
+        }
+        long endTime = System.nanoTime();
+        System.out.println("StringConcat Java: " + (endTime - startTime) / 1e6 + " ms");
+    }
+
+    /**
+     * 97.492125 ms
+     */
+    public static void ArraySort() {
+        System.out.println("\n==> Array Sorting");
+        double[] array = new Random().doubles(1_000_000).toArray();
+        long startTime = System.nanoTime();
+        Arrays.sort(array);
+        long endTime = System.nanoTime();
+        System.out.println("Sort Java: " + (endTime - startTime) / 1e6 + " ms");
     }
 
 }

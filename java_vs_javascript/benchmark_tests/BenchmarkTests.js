@@ -1,6 +1,7 @@
 // @ts-check
 const fs = require('fs');
 const path = require('path');
+
 class BenchmarkTests {
 	/**
 	 * Time: 1227 ms
@@ -44,6 +45,28 @@ class BenchmarkTests {
 		const content = fs.readFileSync(filePath, 'utf-8');
 		const end = Date.now();
 		console.log('Time: ', end - start, ' ms');
+	}
+
+	/**
+	 * 9.902 ms
+	 */
+	stringConcat() {
+		console.time('stringConcat');
+		let str = '';
+		for (let i = 0; i < 1e5; i++) {
+			str += 'a';
+		}
+		console.timeEnd('stringConcat');
+	}
+
+	/**
+	 * 491.172ms
+	 */
+	arraySort() {
+		console.time('SortJS');
+		const array = Array.from({ length: 1e6 }, () => Math.random());
+		array.sort((a, b) => b - a);
+		console.timeEnd('SortJS');
 	}
 }
 
