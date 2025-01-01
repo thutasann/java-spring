@@ -31,7 +31,7 @@ public class DataInitializer implements ApplicationListener<ApplicationReadyEven
             createDefaultRoleIfNotExits(defaultRoles);
             createDefaultAdminIfNotExits();
         } catch (Exception e) {
-            System.out.println("Data DataInitializer Error " + e.getMessage());
+            System.out.println("Data DataInitializer Error ===> " + e.getMessage());
         }
     }
 
