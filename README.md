@@ -1,8 +1,9 @@
 # Java & Spring Boot Learning Path
 
-| Topic                     | Source                         | Type                              |
-| ------------------------- | ------------------------------ | --------------------------------- |
-| Fundamentals              | [Source](./fundamentals)       | Java Fundamentals                 |
-| Data Structures           | [Source](./data_structures)    | Data Structures and Algorithms    |
-| Java vs Javascript        | [Source](./java_vs_javascript) | Java vs Javascript comparisons    |
-| Spring Boot Shopping Cart | [Source](./shopping_cart)      | Spring Boot, Spring Security, JWT |
+| Topic                                | Source                                      | Type                              |
+| ------------------------------------ | ------------------------------------------- | --------------------------------- |
+| Fundamentals                         | [Source](./fundamentals)                    | Java Fundamentals                 |
+| Data Structures                      | [Source](./data_structures)                 | Data Structures and Algorithms    |
+| Java vs Javascript                   | [Source](./java_vs_javascript)              | Java vs Javascript comparisons    |
+| Spring Boot Shopping Cart            | [Source](./shopping_cart)                   | Spring Boot, Spring Security, JWT |
+| Spring Boot React Project Management | [Source](./spring_react_poject_management/) | Spring Boot, Reactjs              |
