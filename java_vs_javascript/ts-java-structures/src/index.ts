@@ -1,1 +1,3 @@
-console.log('JAVA-LIKE DATA STRUCTURES IN TYPESCRIPT');
+import { SinglyLinkedListImpl } from './linked-list';
+
+SinglyLinkedListImpl();
