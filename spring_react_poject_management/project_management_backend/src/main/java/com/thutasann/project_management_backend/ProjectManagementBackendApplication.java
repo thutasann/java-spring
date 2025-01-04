@@ -12,7 +12,7 @@ public class ProjectManagementBackendApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjectManagementBackendApplication.class, args);
-		logger.info("Project Management is running on port http://localhost:8080");
+		logger.info("Project Management is running on port http://localhost:8080 🚀");
 	}
 
 }
