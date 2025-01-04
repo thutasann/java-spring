@@ -38,6 +38,6 @@ public class Main {
         // ------- Search Algorithms
         SearchAlgorithmsUsages searchAlgorithmsUsages = new SearchAlgorithmsUsages();
         searchAlgorithmsUsages.linearSearchUsage();
-
+        searchAlgorithmsUsages.binarySearchUsage();
     }
 }
