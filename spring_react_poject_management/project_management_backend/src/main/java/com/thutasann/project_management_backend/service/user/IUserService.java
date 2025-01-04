@@ -5,7 +5,7 @@ import com.thutasann.project_management_backend.request.LoginRequest;
 import com.thutasann.project_management_backend.response.AuthResponse;
 
 public interface IUserService {
-    User signup(User user);
+    AuthResponse signup(User user);
 
     AuthResponse signin(LoginRequest loginRequest);
 }

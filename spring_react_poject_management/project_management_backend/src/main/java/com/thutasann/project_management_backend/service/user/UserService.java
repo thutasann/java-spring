@@ -31,15 +31,14 @@ public class UserService implements IUserService {
     private CustomUserDetailsImpl customUserDetails;
 
     @Override
-    public User signup(User user) {
+    public AuthResponse signup(User user) {
         User isUserExit = userRepo.findByEmail(user.getEmail());
 
         if (isUserExit != null) {
-            try {
-                throw new Exception("Email already exit with another account");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            AuthResponse authResponse = new AuthResponse();
+            authResponse.setJwt(null);
+            authResponse.setMessage("User already existed");
+            return authResponse;
         }
 
         User createdUser = new User();
@@ -47,7 +46,7 @@ public class UserService implements IUserService {
         createdUser.setEmail(user.getEmail());
         createdUser.setFullName(user.getFullName());
 
-        User savedUser = userRepo.save(createdUser);
+        userRepo.save(createdUser);
 
         Authentication authentication = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -57,7 +56,7 @@ public class UserService implements IUserService {
         authResponse.setJwt(jwt);
         authResponse.setMessage("signup success");
 
-        return savedUser;
+        return authResponse;
     }
 
     @Override

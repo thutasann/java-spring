@@ -22,9 +22,9 @@ public class AuthController {
     private final IUserService userService;
 
     @PostMapping("/signup")
-    public ResponseEntity<User> signup(@RequestBody User user) throws Exception {
-        User savedUser = userService.signup(user);
-        return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
+    public ResponseEntity<AuthResponse> signup(@RequestBody User user) throws Exception {
+        AuthResponse response = userService.signup(user);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @PostMapping("/signin")
