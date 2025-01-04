@@ -1,14 +1,17 @@
 package com.thutasann.project_management_backend.service.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.thutasann.project_management_backend.models.User;
 import com.thutasann.project_management_backend.repository.UserRepository;
+import com.thutasann.project_management_backend.request.LoginRequest;
 import com.thutasann.project_management_backend.response.AuthResponse;
 import com.thutasann.project_management_backend.utilities.JwtProvider;
 
@@ -55,6 +58,38 @@ public class UserService implements IUserService {
         authResponse.setMessage("signup success");
 
         return savedUser;
+    }
+
+    @Override
+    public AuthResponse signin(LoginRequest request) {
+
+        String username = request.getEmail();
+        String password = request.getPassword();
+
+        Authentication authentication = this.authenticate(username, password);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        String jwt = JwtProvider.generateToken(authentication);
+
+        AuthResponse authResponse = new AuthResponse();
+        authResponse.setJwt(jwt);
+        authResponse.setMessage("signin success");
+
+        return authResponse;
+    }
+
+    /**
+     * Authenticate User
+     */
+    private Authentication authenticate(String username, String password) {
+        UserDetails userDetails = customUserDetails.loadUserByUsername(username);
+        if (userDetails == null) {
+            throw new BadCredentialsException("Invalid username or password");
+        }
+        if (!passwordEncoder.matches(password, userDetails.getPassword())) {
+            throw new BadCredentialsException("Invalid password");
+        }
+
+        return new UsernamePasswordAuthenticationToken(userDetails, null);
     }
 
 }
