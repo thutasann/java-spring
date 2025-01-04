@@ -1,4 +1,4 @@
-package com.thutasann.project_management_backend.service;
+package com.thutasann.project_management_backend.service.user;
 
 import java.util.ArrayList;
 import java.util.List;
