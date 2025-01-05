@@ -8,4 +8,12 @@ public interface IUserService {
     AuthResponse signup(User user);
 
     AuthResponse signin(LoginRequest loginRequest);
+
+    User findUserProfileByJwt(String jwt) throws Exception;
+
+    User findUserByEmail(String email) throws Exception;
+
+    User findUserById(Long userId) throws Exception;
+
+    User updateUserProjectSize(User user, int size) throws Exception;
 }

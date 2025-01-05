@@ -1,5 +1,7 @@
 package com.thutasann.project_management_backend.service.user;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -76,6 +78,39 @@ public class UserService implements IUserService {
         return authResponse;
     }
 
+    @Override
+    public User findUserProfileByJwt(String jwt) throws Exception {
+        String email = JwtProvider.getEmailFromToken(jwt);
+        return this.findUserByEmail(email);
+    }
+
+    @Override
+    public User findUserByEmail(String email) throws Exception {
+        User user = userRepo.findByEmail(email);
+        if (user == null) {
+            throw new Exception("User not found");
+        }
+        return user;
+    }
+
+    @Override
+    public User findUserById(Long userId) throws Exception {
+        Optional<User> optionalUser = userRepo.findById(userId);
+        if (optionalUser.isEmpty()) {
+            throw new Exception("User not found");
+        }
+        return optionalUser.get();
+    }
+
+    @Override
+    public User updateUserProjectSize(User user, int size) throws Exception {
+        user.setProjectSize(user.getProjectSize() + size);
+        if (user.getProjectSize() == -1) {
+            throw new Exception("Cannot update user project size");
+        }
+        return userRepo.save(user);
+    }
+
     /**
      * Authenticate User
      */
@@ -90,5 +125,4 @@ public class UserService implements IUserService {
 
         return new UsernamePasswordAuthenticationToken(userDetails, null);
     }
-
 }
