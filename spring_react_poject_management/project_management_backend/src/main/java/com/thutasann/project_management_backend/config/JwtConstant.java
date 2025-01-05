@@ -7,7 +7,7 @@ public class JwtConstant {
     /**
      * JWT SECRET KEY
      */
-    public static final String SECRET_KEY = "4xSm0H]d@Ojq%$ot.ey+$y+n|Fu8w|.=<+MD%v3&l_Z__#Ou%eJ%.[o <](F[n}f";
+    public static final String SECRET_KEY = "YourSuperSecretKeyMustBeAtLeast256BitsLong";
 
     /**
      * JWT HEADER

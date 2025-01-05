@@ -1,5 +1,6 @@
 package com.thutasann.project_management_backend.utilities;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 import javax.crypto.SecretKey;
@@ -16,7 +17,8 @@ import io.jsonwebtoken.security.Keys;
  * JWT Provider
  */
 public class JwtProvider {
-    static SecretKey key = Keys.hmacShaKeyFor(JwtConstant.SECRET_KEY.getBytes());
+    static SecretKey key = Keys.hmacShaKeyFor(JwtConstant.SECRET_KEY.getBytes(StandardCharsets.UTF_8));
+    private static final long EXPIRATION_TIME_MS = 24 * 60 * 60 * 1000; // 24 hours
 
     /**
      * Generate Token
@@ -26,14 +28,16 @@ public class JwtProvider {
      * @return jwt string
      */
     public static String generateToken(Authentication auth) {
-        String jwt = Jwts.builder()
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 24 * 60 * 60 * 1000))
-                .claim("email", auth.getName())
-                .signWith(key)
-                .compact();
+        if (auth == null || auth.getName() == null) {
+            throw new IllegalArgumentException("Authentication object is null or invalid");
+        }
 
-        return jwt;
+        return Jwts.builder()
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME_MS))
+                .claim("email", auth.getName())
+                .signWith(key) // Uses a secure HMAC SHA-256 algorithm
+                .compact();
     }
 
     /**
