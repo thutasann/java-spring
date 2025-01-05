@@ -12,7 +12,7 @@ import com.thutasann.project_management_backend.models.User;
 public interface ProjectRepository extends JpaRepository<Project, Long> {
     List<Project> findByOwner(User user);
 
-    List<Project> findByNameContainingAndTeamContaining(String partialName, User user);
+    List<Project> findByNameContainingAndTeamContains(String partialName, User user);
 
     @Query("SELECT p FROM Project p join p.team t where t=:user")
     List<Project> findProjectByTeam(@Param("user") User user);
