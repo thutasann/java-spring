@@ -66,7 +66,7 @@ public class ProjectService implements IProjectService {
     public Project getProjectById(Long projectId) throws Exception {
         Optional<Project> optionalProject = projectRepo.findById(projectId);
         if (optionalProject.isEmpty()) {
-            throw new Exception("project not found");
+            throw new Exception("project not found by Id");
         }
         return optionalProject.get();
     }
