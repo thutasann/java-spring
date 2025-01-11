@@ -3,6 +3,7 @@ package com.thutasann.project_management_backend.service.user;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -15,6 +16,7 @@ import com.thutasann.project_management_backend.models.User;
 import com.thutasann.project_management_backend.repository.UserRepository;
 import com.thutasann.project_management_backend.request.LoginRequest;
 import com.thutasann.project_management_backend.response.AuthResponse;
+import com.thutasann.project_management_backend.service.subscription.ISubscriptionService;
 import com.thutasann.project_management_backend.utilities.JwtProvider;
 
 import lombok.RequiredArgsConstructor;
@@ -32,6 +34,10 @@ public class UserService implements IUserService {
     @Autowired
     private CustomUserDetailsImpl customUserDetails;
 
+    @Lazy
+    @Autowired
+    private ISubscriptionService subscriptionService;
+
     @Override
     public AuthResponse signup(User user) {
         User isUserExit = userRepo.findByEmail(user.getEmail());
@@ -48,7 +54,10 @@ public class UserService implements IUserService {
         createdUser.setEmail(user.getEmail());
         createdUser.setFullName(user.getFullName());
 
-        userRepo.save(createdUser);
+        User savedUser = userRepo.save(createdUser);
+
+        // subscription
+        subscriptionService.createSubscription(savedUser);
 
         Authentication authentication = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -113,6 +122,8 @@ public class UserService implements IUserService {
 
     /**
      * Authenticate User
+     * 
+     * @hidden
      */
     private Authentication authenticate(String username, String password) {
         UserDetails userDetails = customUserDetails.loadUserByUsername(username);
