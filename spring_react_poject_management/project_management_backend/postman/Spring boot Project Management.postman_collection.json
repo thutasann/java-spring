@@ -255,7 +255,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzY1MTc5OTAsImV4cCI6MTczNjYwNDM5MCwiZW1haWwiOiJ0aHV0YXNhbm4yMDAyQGdtYWlsLmNvbSJ9.L8lJuyglNygeNc_TdM-agYc1H2TAMVm99z44WLgY5v8",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzY2MDg0MjksImV4cCI6MTczNjY5NDgyOSwiZW1haWwiOiJ0aHV0YXNhbm4yMDAyQGdtYWlsLmNvbSJ9.qKw375RJOh4VT3wMXHLr63pdMSniFBOYWyk9MENislQ",
 								"type": "text"
 							}
 						],
@@ -317,7 +317,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"title\": \"issue two\",\n  \"description\": \"this is issue two\",\n  \"status\": \"new\",\n  \"projectID\": 152,\n  \"priority\": \"low\",\n  \"dueDate\": \"2025-02-11\"\n}",
+							"raw": "{\n  \"title\": \"issue three\",\n  \"description\": \"this is issue three\",\n  \"status\": \"new\",\n  \"projectID\": 152,\n  \"priority\": \"low\",\n  \"dueDate\": \"2025-02-11\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -335,6 +335,88 @@
 								"api",
 								"issues",
 								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "create comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzY2MDg0MjksImV4cCI6MTczNjY5NDgyOSwiZW1haWwiOiJ0aHV0YXNhbm4yMDAyQGdtYWlsLmNvbSJ9.qKw375RJOh4VT3wMXHLr63pdMSniFBOYWyk9MENislQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"issueId\": 1,\n  \"content\": \"this is comment two\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/comments/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"comments",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get comments by issue Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzY2MDg0MjksImV4cCI6MTczNjY5NDgyOSwiZW1haWwiOiJ0aHV0YXNhbm4yMDAyQGdtYWlsLmNvbSJ9.qKw375RJOh4VT3wMXHLr63pdMSniFBOYWyk9MENislQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/comments/get/issue/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"comments",
+								"get",
+								"issue",
+								"1"
 							]
 						}
 					},
