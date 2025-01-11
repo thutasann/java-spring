@@ -1,4 +1,4 @@
-# Full Stack Project Management Using Spring Boot, React, ShadcnUI, Redux
+# Full Stack Project Management Using Spring Boot, React.
 
 ## Swagger
 
