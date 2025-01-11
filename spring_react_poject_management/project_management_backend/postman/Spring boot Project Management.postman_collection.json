@@ -1,0 +1,381 @@
+{
+	"info": {
+		"_postman_id": "572be278-b165-4cf9-90d9-d46682de0c82",
+		"name": "Spring boot Project Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14049071"
+	},
+	"item": [
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "get projects",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzY1MTc5OTAsImV4cCI6MTczNjYwNDM5MCwiZW1haWwiOiJ0aHV0YXNhbm4yMDAyQGdtYWlsLmNvbSJ9.L8lJuyglNygeNc_TdM-agYc1H2TAMVm99z44WLgY5v8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/projects/get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"projects",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create project",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzY1Nzk1NTksImV4cCI6MTczNjY2NTk1OSwiZW1haWwiOiJ0aHV0YXNhbm4yMDAyQGdtYWlsLmNvbSJ9.6T_8aWthSwKIVKq4WQOTjqK5c6vLt7-B8w9Q-3EHDzc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"project five\",\n    \"description\": \"project five description\",\n    \"category\": \"cate one\",\n    \"tags\": [\n        \"tag one\", \"tag two\", \"tag three\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/projects/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"projects",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "invite project",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzY1Nzk1NTksImV4cCI6MTczNjY2NTk1OSwiZW1haWwiOiJ0aHV0YXNhbm4yMDAyQGdtYWlsLmNvbSJ9.6T_8aWthSwKIVKq4WQOTjqK5c6vLt7-B8w9Q-3EHDzc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"projectId\": 152,\n  \"email\": \"thutasann2002@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/projects/invite-project",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"projects",
+								"invite-project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "accept project",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzY1Nzk1NTksImV4cCI6MTczNjY2NTk1OSwiZW1haWwiOiJ0aHV0YXNhbm4yMDAyQGdtYWlsLmNvbSJ9.6T_8aWthSwKIVKq4WQOTjqK5c6vLt7-B8w9Q-3EHDzc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"project five\",\n    \"description\": \"project five description\",\n    \"category\": \"cate one\",\n    \"tags\": [\n        \"tag one\", \"tag two\", \"tag three\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/projects/accept-invitation?token=84d34c0d-f7bb-4b8d-b3c4-28971e6afba9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"projects",
+								"accept-invitation"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "84d34c0d-f7bb-4b8d-b3c4-28971e6afba9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get project by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzY1MTc5OTAsImV4cCI6MTczNjYwNDM5MCwiZW1haWwiOiJ0aHV0YXNhbm4yMDAyQGdtYWlsLmNvbSJ9.L8lJuyglNygeNc_TdM-agYc1H2TAMVm99z44WLgY5v8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/projects/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"projects",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Issues",
+			"item": [
+				{
+					"name": "add user to issue",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzY1MTc5OTAsImV4cCI6MTczNjYwNDM5MCwiZW1haWwiOiJ0aHV0YXNhbm4yMDAyQGdtYWlsLmNvbSJ9.L8lJuyglNygeNc_TdM-agYc1H2TAMVm99z44WLgY5v8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/issues/add-user-to-issue/1/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"issues",
+								"add-user-to-issue",
+								"1",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update status",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzY1MTc5OTAsImV4cCI6MTczNjYwNDM5MCwiZW1haWwiOiJ0aHV0YXNhbm4yMDAyQGdtYWlsLmNvbSJ9.L8lJuyglNygeNc_TdM-agYc1H2TAMVm99z44WLgY5v8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/issues/update-status/2?status=progress",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"issues",
+								"update-status",
+								"2"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "progress"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get issue by Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzY1MTc5OTAsImV4cCI6MTczNjYwNDM5MCwiZW1haWwiOiJ0aHV0YXNhbm4yMDAyQGdtYWlsLmNvbSJ9.L8lJuyglNygeNc_TdM-agYc1H2TAMVm99z44WLgY5v8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/issues/get/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"issues",
+								"get",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete issue by Id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzY1MTc5OTAsImV4cCI6MTczNjYwNDM5MCwiZW1haWwiOiJ0aHV0YXNhbm4yMDAyQGdtYWlsLmNvbSJ9.L8lJuyglNygeNc_TdM-agYc1H2TAMVm99z44WLgY5v8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/issues/delete/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"issues",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create issue",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzY1MTc5OTAsImV4cCI6MTczNjYwNDM5MCwiZW1haWwiOiJ0aHV0YXNhbm4yMDAyQGdtYWlsLmNvbSJ9.L8lJuyglNygeNc_TdM-agYc1H2TAMVm99z44WLgY5v8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"issue two\",\n  \"description\": \"this is issue two\",\n  \"status\": \"new\",\n  \"projectID\": 152,\n  \"priority\": \"low\",\n  \"dueDate\": \"2025-02-11\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/issues/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"issues",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MzYwODA5MzYsImV4cCI6MTczNjE2NzMzNiwiZW1haWwiOiJ0aHV0YXNhbm4yMDAyQGdtYWlsLmNvbSJ9.BQdcX4IdJCFWgvsutc4GPuEy6bqNfWIG_8m7tylmyrtVuNub1tuK_vM8RDG0EFKxeyw6Y81uMA1LbWeHgJGSjw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"thutasann2002@gmail.com\",\n  \"password\": \"test@123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

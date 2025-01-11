@@ -18,5 +18,4 @@ public class ProjectManagementBackendApplication {
 		logger.info("Project Management is running on port " + host + " 🚀");
 		logger.info("Swagger is running on " + swagger + " 🚀");
 	}
-
 }
