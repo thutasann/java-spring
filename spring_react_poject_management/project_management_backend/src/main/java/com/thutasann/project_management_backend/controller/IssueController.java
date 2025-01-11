@@ -1,6 +1,7 @@
 package com.thutasann.project_management_backend.controller;
 
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
+import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.thutasann.project_management_backend.dto.IssueDTO;
 import com.thutasann.project_management_backend.models.Issue;
 import com.thutasann.project_management_backend.models.User;
 import com.thutasann.project_management_backend.request.IssueRequest;
@@ -53,11 +55,27 @@ public class IssueController {
     public ResponseEntity<DataResponse> createIssue(
             @RequestBody IssueRequest issueRequest,
             @RequestHeader("Authorization") String jwt) throws Exception {
-
         try {
-            User user = userService.findUserProfileByJwt(jwt);
-            Issue issue = issueService.createIssue(issueRequest, user);
-            return ResponseEntity.ok(new DataResponse("issue created", issue));
+            User tokenUser = userService.findUserProfileByJwt(jwt);
+            User user = userService.findUserById(tokenUser.getId());
+
+            if (user != null) {
+                Issue createdIssue = issueService.createIssue(issueRequest, tokenUser);
+                IssueDTO issueDTO = new IssueDTO();
+                issueDTO.setDescription(createdIssue.getDescription());
+                issueDTO.setDueDate(createdIssue.getDueDate());
+                issueDTO.setId(createdIssue.getId());
+                issueDTO.setPriority(createdIssue.getPriority());
+                issueDTO.setProject(createdIssue.getProject());
+                issueDTO.setProjectID(createdIssue.getProjectID());
+                issueDTO.setStatus(createdIssue.getStatus());
+                issueDTO.setTitle(createdIssue.getTitle());
+                issueDTO.setTags(createdIssue.getTags());
+                issueDTO.setAssingnee(createdIssue.getAssignee());
+                return ResponseEntity.ok(new DataResponse("issue created", issueDTO));
+            } else {
+                return ResponseEntity.status(UNAUTHORIZED).body(new DataResponse("Unauthorized", null));
+            }
         } catch (Exception e) {
             return ResponseEntity.status(INTERNAL_SERVER_ERROR).body(new DataResponse(e.getMessage(), null));
         }
