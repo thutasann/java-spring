@@ -260,7 +260,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/api/issues/get/1",
+							"raw": "http://localhost:8080/api/issues/get/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -270,7 +270,7 @@
 								"api",
 								"issues",
 								"get",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -417,6 +417,87 @@
 								"get",
 								"issue",
 								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Messages",
+			"item": [
+				{
+					"name": "send message",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzY2MDg0MjksImV4cCI6MTczNjY5NDgyOSwiZW1haWwiOiJ0aHV0YXNhbm4yMDAyQGdtYWlsLmNvbSJ9.qKw375RJOh4VT3wMXHLr63pdMSniFBOYWyk9MENislQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"projectId\": 102,\n  \"content\": \"this is message three\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/messages/send",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"messages",
+								"send"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get messages by project Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzY2MDg0MjksImV4cCI6MTczNjY5NDgyOSwiZW1haWwiOiJ0aHV0YXNhbm4yMDAyQGdtYWlsLmNvbSJ9.qKw375RJOh4VT3wMXHLr63pdMSniFBOYWyk9MENislQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/messages/get/102",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"messages",
+								"get",
+								"102"
 							]
 						}
 					},
