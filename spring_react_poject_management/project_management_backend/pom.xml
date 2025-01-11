@@ -102,11 +102,11 @@
 			<version>2.1.0</version>
 		</dependency>
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
 			<version>20210307</version>
-		</dependency>
+		</dependency> -->
 
 		<dependency>
 			<groupId>com.razorpay</groupId>
