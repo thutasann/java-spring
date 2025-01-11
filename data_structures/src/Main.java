@@ -39,5 +39,6 @@ public class Main {
         SearchAlgorithmsUsages searchAlgorithmsUsages = new SearchAlgorithmsUsages();
         searchAlgorithmsUsages.linearSearchUsage();
         searchAlgorithmsUsages.binarySearchUsage();
+        searchAlgorithmsUsages.interpolationSearchUsage();
     }
 }

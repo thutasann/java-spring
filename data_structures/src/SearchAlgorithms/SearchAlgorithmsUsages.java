@@ -23,4 +23,11 @@ public class SearchAlgorithmsUsages {
         int index = this.searchAlgorithms.binarySearch(array, target);
         System.out.println("Result --> " + index);
     }
+
+    public void interpolationSearchUsage() {
+        System.out.println("\n==> Interpolation Search Usage ");
+        int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        int index = this.searchAlgorithms.interpolationSearch(array, 8);
+        System.out.println("index ==> " + index);
+    }
 }
