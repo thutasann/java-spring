@@ -666,6 +666,45 @@
 					"response": []
 				},
 				{
+					"name": "get user profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzY2MjU5NTEsImV4cCI6MTczNjcxMjM1MSwiZW1haWwiOiJ0aHV0YXNhbm4yMDAyQGdtYWlsLmNvbSJ9.sDlGYAn3V0oiV-8-3XqZ4Kv9CELYcSQF_rLGMBMYu-k",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "signup",
 					"request": {
 						"method": "POST",
@@ -695,6 +734,54 @@
 							"path": [
 								"auth",
 								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "payment",
+			"item": [
+				{
+					"name": "create payment link",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzY2MTc4NjQsImV4cCI6MTczNjcwNDI2NCwiZW1haWwiOiJ0aHV0YXNhbm4yMDAyQGdtYWlsLmNvbSJ9.ikyMMu8k_OuEaIhnlu1NPSeZcUMFbxJa72mQPFT6Cpw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/payment/create/payment-link?planType=MONTHLY",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"payment",
+								"create",
+								"payment-link"
+							],
+							"query": [
+								{
+									"key": "planType",
+									"value": "MONTHLY"
+								}
 							]
 						}
 					},
