@@ -16,9 +16,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.thutasann.project_management_backend.models.Chat;
+import com.thutasann.project_management_backend.models.Invitation;
 import com.thutasann.project_management_backend.models.Project;
 import com.thutasann.project_management_backend.models.User;
+import com.thutasann.project_management_backend.request.InvitationRequest;
 import com.thutasann.project_management_backend.response.DataResponse;
+import com.thutasann.project_management_backend.service.invitation.IInvitationService;
 import com.thutasann.project_management_backend.service.project.IProjectService;
 import com.thutasann.project_management_backend.service.user.IUserService;
 
@@ -38,6 +41,9 @@ public class ProjectController {
 
     @Autowired
     private IUserService userService;
+
+    @Autowired
+    private IInvitationService invitationService;
 
     @GetMapping("/get")
     public ResponseEntity<DataResponse> getProjects(
@@ -122,4 +128,30 @@ public class ProjectController {
         }
     }
 
+    @PostMapping("/invite-project")
+    public ResponseEntity<DataResponse> inviteProject(
+            @RequestHeader("Authorization") String jwt,
+            @RequestBody InvitationRequest request) {
+        try {
+            invitationService.sendInvitation(request.getEmail(), request.getProjectId());
+            return ResponseEntity.ok(new DataResponse("send project invitation success", null));
+        } catch (Exception e) {
+            return ResponseEntity.status(INTERNAL_SERVER_ERROR).body(new DataResponse(e.getMessage(), null));
+        }
+    }
+
+    @GetMapping("/accept-invitation")
+    public ResponseEntity<DataResponse> acceptInvitation(
+            @RequestHeader("Authorization") String jwt,
+            @RequestParam String token) {
+        try {
+            System.out.println("accept token ==> " + token);
+            User user = userService.findUserProfileByJwt(jwt);
+            Invitation invitation = invitationService.acceptInvitation(token, user.getId());
+            projectService.addUserToProject(invitation.getProjectId(), user.getId());
+            return ResponseEntity.ok(new DataResponse("accept project invitation success", null));
+        } catch (Exception e) {
+            return ResponseEntity.status(INTERNAL_SERVER_ERROR).body(new DataResponse(e.getMessage(), null));
+        }
+    }
 }

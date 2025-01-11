@@ -10,7 +10,7 @@ public class ProjectManagementBackendApplication {
 
 	private static final Logger logger = LoggerFactory.getLogger(ProjectManagementBackendApplication.class);
 
-	private static final String host = "http://localhost:8080/api/v1";
+	private static final String host = "http://localhost:8080/api/";
 	private static final String swagger = "http://localhost:8080/swagger-ui/index.html";
 
 	public static void main(String[] args) {
