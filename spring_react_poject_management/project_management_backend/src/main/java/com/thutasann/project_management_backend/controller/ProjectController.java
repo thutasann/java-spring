@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,7 +25,6 @@ import com.thutasann.project_management_backend.service.user.IUserService;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 
@@ -87,6 +87,7 @@ public class ProjectController {
             @RequestHeader("Authorization") String jwt,
             @RequestBody Project project) {
         try {
+            System.out.println("create name ==> " + project.getName());
             User user = userService.findUserProfileByJwt(jwt);
             Project createdProject = projectService.createProject(project, user);
             return ResponseEntity.ok(new DataResponse("create success", createdProject));
