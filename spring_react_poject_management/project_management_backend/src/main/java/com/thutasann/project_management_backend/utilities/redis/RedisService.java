@@ -1,4 +1,4 @@
-package com.thutasann.project_management_backend.utilities;
+package com.thutasann.project_management_backend.utilities.redis;
 
 import java.time.Duration;
 

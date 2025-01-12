@@ -14,7 +14,7 @@ import com.thutasann.project_management_backend.request.IssueRequest;
 import com.thutasann.project_management_backend.service.project.IProjectService;
 import com.thutasann.project_management_backend.service.user.IUserService;
 import com.thutasann.project_management_backend.utilities.CustomLogger;
-import com.thutasann.project_management_backend.utilities.RedisService;
+import com.thutasann.project_management_backend.utilities.redis.RedisService;
 
 @Service
 public class IssueService implements IIssueService {
