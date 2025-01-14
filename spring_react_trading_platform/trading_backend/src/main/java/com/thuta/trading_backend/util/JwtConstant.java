@@ -1,4 +1,4 @@
-package com.thuta.trading_backend.config;
+package com.thuta.trading_backend.util;
 
 /**
  * Jwt Constant
