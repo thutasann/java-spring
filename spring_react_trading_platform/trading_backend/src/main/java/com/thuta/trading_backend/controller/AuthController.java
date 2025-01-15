@@ -12,6 +12,7 @@ import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.thuta.trading_backend.entity.User;
+import com.thuta.trading_backend.response.AuthResponse;
 import com.thuta.trading_backend.response.DataResponse;
 import com.thuta.trading_backend.service.auth.IAuthService;
 
@@ -25,8 +26,8 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<DataResponse> register(@RequestBody User user) {
         try {
-            String jwtToken = authService.register(user);
-            return ResponseEntity.ok(new DataResponse("Signup successful", jwtToken));
+            AuthResponse authResponse = authService.register(user);
+            return ResponseEntity.ok(new DataResponse("Signup successful", authResponse));
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(BAD_REQUEST).body(new DataResponse(e.getMessage(), null));
         } catch (Exception e) {

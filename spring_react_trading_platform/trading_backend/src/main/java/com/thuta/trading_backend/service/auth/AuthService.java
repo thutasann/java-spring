@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.thuta.trading_backend.entity.User;
 import com.thuta.trading_backend.repository.UserRepository;
+import com.thuta.trading_backend.response.AuthResponse;
 import com.thuta.trading_backend.util.JwtProvider;
 
 @Service
@@ -20,7 +21,7 @@ public class AuthService implements IAuthService {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public String register(User user) throws Exception {
+    public AuthResponse register(User user) throws Exception {
         User isEmailExist = userRepo.findByEmail(user.getEmail());
         if (isEmailExist != null) {
             throw new IllegalArgumentException("User already exists with this email: " + user.getEmail());
@@ -35,10 +36,17 @@ public class AuthService implements IAuthService {
         Authentication authentication = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
+        // save user
         userRepo.save(newUser);
 
+        // generate token
         String jwt = JwtProvider.generateToken(authentication);
-        return jwt;
+
+        AuthResponse authResponse = new AuthResponse();
+        authResponse.setJwt(jwt);
+        authResponse.setStatus(true);
+
+        return authResponse;
     }
 
 }
