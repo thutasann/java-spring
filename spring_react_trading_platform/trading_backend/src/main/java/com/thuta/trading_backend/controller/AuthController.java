@@ -1,6 +1,8 @@
 package com.thuta.trading_backend.controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,9 +46,13 @@ public class AuthController {
             return ResponseEntity.ok(new DataResponse("SignIn successful", authResponse));
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(BAD_REQUEST).body(new DataResponse(e.getMessage(), null));
+        } catch (BadCredentialsException e) {
+            return ResponseEntity.status(BAD_REQUEST).body(new DataResponse(e.getMessage(), null));
+        } catch (UsernameNotFoundException e) {
+            return ResponseEntity.status(BAD_REQUEST).body(new DataResponse(e.getMessage(), null));
         } catch (Exception e) {
             return ResponseEntity.status(INTERNAL_SERVER_ERROR)
-                    .body(new DataResponse("An unexpected error occurred", null));
+                    .body(new DataResponse("An unexpected error occurred", e.getMessage()));
         }
     }
 }

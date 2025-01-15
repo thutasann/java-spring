@@ -83,10 +83,13 @@ public class AuthService implements IAuthService {
      */
     private Authentication authenticate(String username, String password) {
         UserDetails userDetails = customUserDetails.loadUserByUsername(username);
+
         if (userDetails == null) {
             throw new BadCredentialsException("Invalid username or password");
         }
+
         if (!passwordEncoder.matches(password, userDetails.getPassword())) {
+            System.out.println("invalid password =>>>");
             throw new BadCredentialsException("Invalid password");
         }
 
