@@ -25,8 +25,8 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<DataResponse> register(@RequestBody User user) {
         try {
-            User savedUser = authService.register(user);
-            return ResponseEntity.ok(new DataResponse("Signup successful", savedUser));
+            String jwtToken = authService.register(user);
+            return ResponseEntity.ok(new DataResponse("Signup successful", jwtToken));
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(BAD_REQUEST).body(new DataResponse(e.getMessage(), null));
         } catch (Exception e) {
