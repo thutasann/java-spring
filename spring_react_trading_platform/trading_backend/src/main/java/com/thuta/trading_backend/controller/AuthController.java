@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +23,15 @@ public class AuthController {
     private IAuthService authService;
 
     @PostMapping("/signup")
-    public ResponseEntity<DataResponse> register(
-            @RequestBody User user) throws Exception {
+    public ResponseEntity<DataResponse> register(@RequestBody User user) {
         try {
             User savedUser = authService.register(user);
-            return ResponseEntity.ok(new DataResponse("signup success", savedUser));
+            return ResponseEntity.ok(new DataResponse("Signup successful", savedUser));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(BAD_REQUEST).body(new DataResponse(e.getMessage(), null));
         } catch (Exception e) {
-            return ResponseEntity.status(INTERNAL_SERVER_ERROR).body(new DataResponse(e.getMessage(), null));
+            return ResponseEntity.status(INTERNAL_SERVER_ERROR)
+                    .body(new DataResponse("An unexpected error occurred", null));
         }
     }
 }

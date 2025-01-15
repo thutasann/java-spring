@@ -17,16 +17,17 @@ public class AuthService implements IAuthService {
 
     @Override
     public User register(User user) throws Exception {
-        try {
-            User newUser = new User();
-            newUser.setFullName(user.getFullName());
-            newUser.setEmail(user.getEmail());
-            newUser.setPassword(passwordEncoder.encode(user.getPassword()));
-
-            User savedUser = userRepo.save(newUser);
-            return savedUser;
-        } catch (Exception e) {
-            throw new Exception("Something went wrong at signup");
+        User isEmailExist = userRepo.findByEmail(user.getEmail());
+        if (isEmailExist != null) {
+            throw new IllegalArgumentException("User already exists with this email: " + user.getEmail());
         }
+
+        User newUser = new User();
+        newUser.setFullName(user.getFullName());
+        newUser.setEmail(user.getEmail());
+        newUser.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        return userRepo.save(newUser);
     }
+
 }
