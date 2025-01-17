@@ -1,8 +1,12 @@
 package com.thuta.trading_backend.entity;
 
+import java.util.UUID;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
@@ -11,7 +15,8 @@ import lombok.Data;
 @Data
 public class TwoFactorOTP {
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO) // Automatically generate UUID
+    private UUID id;
 
     private String otp;
 
