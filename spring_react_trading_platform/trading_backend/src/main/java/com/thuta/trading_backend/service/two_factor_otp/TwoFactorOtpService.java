@@ -18,12 +18,9 @@ public class TwoFactorOtpService implements ITwoFactorOtpService {
 
     @Override
     public TwoFactorOTP createTwoFactorOtp(User user, String otp, String jwt) {
-        UUID uuid = UUID.randomUUID();
-
         TwoFactorOTP twoFactorOTP = new TwoFactorOTP();
         twoFactorOTP.setOtp(otp);
         twoFactorOTP.setJwt(jwt);
-        twoFactorOTP.setId(uuid);
         twoFactorOTP.setUser(user);
         return twoFactorRepo.save(twoFactorOTP);
     }

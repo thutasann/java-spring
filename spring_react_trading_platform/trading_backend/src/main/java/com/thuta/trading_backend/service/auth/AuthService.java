@@ -9,12 +9,19 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.thuta.trading_backend.entity.TwoFactorOTP;
 import com.thuta.trading_backend.entity.User;
 import com.thuta.trading_backend.repository.UserRepository;
 import com.thuta.trading_backend.request.LoginRequest;
 import com.thuta.trading_backend.response.AuthResponse;
 import com.thuta.trading_backend.service.CustomUserDetailsService;
+import com.thuta.trading_backend.service.two_factor_otp.ITwoFactorOtpService;
 import com.thuta.trading_backend.util.JwtProvider;
+import com.thuta.trading_backend.util.OtpUtils;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 
 @Service
 public class AuthService implements IAuthService {
@@ -26,6 +33,20 @@ public class AuthService implements IAuthService {
 
     @Autowired
     private CustomUserDetailsService customUserDetails;
+
+    @Autowired
+    private ITwoFactorOtpService twoFactorOtpService;
+
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    public void refreshEntity(Object entity) {
+        entityManager.refresh(entity);
+    }
+
+    public void deleteEntity(Object entity) {
+        entityManager.remove(entityManager.contains(entity) ? entity : entityManager.merge(entity));
+    }
 
     @Override
     public AuthResponse register(User user) throws Exception {
@@ -57,6 +78,7 @@ public class AuthService implements IAuthService {
     }
 
     @Override
+    @Transactional
     public AuthResponse signIn(LoginRequest request) throws Exception {
         if (request == null) {
             throw new IllegalArgumentException("Login Request cannot be null");
@@ -68,6 +90,32 @@ public class AuthService implements IAuthService {
         Authentication authentication = this.authenticate(username, password);
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = JwtProvider.generateToken(authentication);
+
+        User user = userRepo.findByEmail(request.getEmail());
+
+        System.out.println("twFactor Auth Enabled ==> " + request.getTwoFactorAuth().isEnabled());
+
+        if (request.getTwoFactorAuth().isEnabled()) {
+            AuthResponse authResponse = new AuthResponse();
+            authResponse.setMessage("Two factor auth is enabled");
+            authResponse.setTwoFactorAuthEnabled(true);
+
+            String otp = OtpUtils.generateOTP();
+
+            // check for old otp
+            TwoFactorOTP oldTwoFactorOTP = twoFactorOtpService.findByUser(user.getId());
+            System.out.println("oldTwoFactorOTP ==> " + oldTwoFactorOTP);
+            if (oldTwoFactorOTP != null) {
+                twoFactorOtpService.deleteTwoFactorOtp(oldTwoFactorOTP);
+                return authResponse;
+            }
+
+            // create new otp
+            TwoFactorOTP newTwoFactorOTP = twoFactorOtpService.createTwoFactorOtp(user, otp, jwt);
+
+            authResponse.setSession(newTwoFactorOTP.getId().toString());
+            return authResponse;
+        }
 
         AuthResponse authResponse = new AuthResponse();
         authResponse.setJwt(jwt);
