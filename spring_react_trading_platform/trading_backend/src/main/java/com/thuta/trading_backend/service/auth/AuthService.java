@@ -15,6 +15,7 @@ import com.thuta.trading_backend.repository.UserRepository;
 import com.thuta.trading_backend.request.LoginRequest;
 import com.thuta.trading_backend.response.AuthResponse;
 import com.thuta.trading_backend.service.CustomUserDetailsService;
+import com.thuta.trading_backend.service.EmailService;
 import com.thuta.trading_backend.service.two_factor_otp.ITwoFactorOtpService;
 import com.thuta.trading_backend.util.JwtProvider;
 import com.thuta.trading_backend.util.OtpUtils;
@@ -36,6 +37,9 @@ public class AuthService implements IAuthService {
 
     @Autowired
     private ITwoFactorOtpService twoFactorOtpService;
+
+    @Autowired
+    private EmailService emailService;
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -93,8 +97,6 @@ public class AuthService implements IAuthService {
 
         User user = userRepo.findByEmail(request.getEmail());
 
-        System.out.println("twFactor Auth Enabled ==> " + request.getTwoFactorAuth().isEnabled());
-
         if (request.getTwoFactorAuth().isEnabled()) {
             AuthResponse authResponse = new AuthResponse();
             authResponse.setMessage("Two factor auth is enabled");
@@ -102,16 +104,15 @@ public class AuthService implements IAuthService {
 
             String otp = OtpUtils.generateOTP();
 
-            // check for old otp
             TwoFactorOTP oldTwoFactorOTP = twoFactorOtpService.findByUser(user.getId());
-            System.out.println("oldTwoFactorOTP ==> " + oldTwoFactorOTP);
             if (oldTwoFactorOTP != null) {
                 twoFactorOtpService.deleteTwoFactorOtp(oldTwoFactorOTP);
                 return authResponse;
             }
 
-            // create new otp
             TwoFactorOTP newTwoFactorOTP = twoFactorOtpService.createTwoFactorOtp(user, otp, jwt);
+
+            emailService.sendEmail(request.getEmail(), otp);
 
             authResponse.setSession(newTwoFactorOTP.getId().toString());
             return authResponse;

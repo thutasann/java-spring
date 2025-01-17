@@ -3,6 +3,7 @@ package com.thuta.trading_backend.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,5 +55,12 @@ public class AuthController {
             return ResponseEntity.status(INTERNAL_SERVER_ERROR)
                     .body(new DataResponse("An unexpected error occurred", e.getMessage()));
         }
+    }
+
+    @PostMapping("/verify")
+    public ResponseEntity<AuthResponse> verifySignInOtp(
+            @PathVariable String otp,
+            @PathVariable String id) {
+        return null;
     }
 }
