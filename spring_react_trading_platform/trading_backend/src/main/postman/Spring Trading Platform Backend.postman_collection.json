@@ -47,7 +47,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"email\": \"thutasann2002@gmail.com\",\n  \"password\": \"test@123\"\n}",
+							"raw": "{\n  \"email\": \"thutasann2002@gmail.com\",\n  \"password\": \"test@1234\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -198,6 +198,90 @@
 								{
 									"key": "otp",
 									"value": "991123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset password send otp",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzcxODE4NzgsImV4cCI6MTczNzI2ODI3OCwiZW1haWwiOiJ0aHV0YXNhbm4yMDAyQGdtYWlsLmNvbSJ9.agw0PKuBzoQU0Y5Liu2aG0zid3avS2FhFpn9fiy3N8k",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"sendTo\": \"thutasann2002@gmail.com\",\n  \"verificationType\": \"EMAIL\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/user/reset-password/send-otp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"reset-password",
+								"send-otp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset password verify otp",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzcxODE4NzgsImV4cCI6MTczNzI2ODI3OCwiZW1haWwiOiJ0aHV0YXNhbm4yMDAyQGdtYWlsLmNvbSJ9.agw0PKuBzoQU0Y5Liu2aG0zid3avS2FhFpn9fiy3N8k",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"otp\": \"353781\",\n  \"password\": \"test@1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/user/reset-password/verify-otp?id=1847ef8c-0634-4c61-9cbb-10ebc5f02f3c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"reset-password",
+								"verify-otp"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1847ef8c-0634-4c61-9cbb-10ebc5f02f3c"
 								}
 							]
 						}

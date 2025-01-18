@@ -2,7 +2,7 @@ package com.thuta.trading_backend.entity;
 
 import java.util.UUID;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.thuta.trading_backend.enums.VERIFICATION_TYPE;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,21 +12,21 @@ import jakarta.persistence.OneToOne;
 import lombok.Data;
 
 /**
- * Two Factor OTP Entity
+ * Forgot Password Token Entity
  */
 @Entity
 @Data
-public class TwoFactorOTP {
+public class ForgotPasswordToken {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    private String otp;
-
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToOne
     private User user;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private String jwt;
+    private String otp;
+
+    private VERIFICATION_TYPE verificationType;
+
+    private String sendTo;
 }

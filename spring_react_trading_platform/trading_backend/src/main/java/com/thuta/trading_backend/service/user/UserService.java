@@ -3,6 +3,7 @@ package com.thuta.trading_backend.service.user;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.thuta.trading_backend.entity.TwoFactorAuth;
@@ -15,6 +16,9 @@ import com.thuta.trading_backend.util.JwtProvider;
 public class UserService implements IUserService {
     @Autowired
     private UserRepository userRepo;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public User findUserProfileByJwt(String jwt) throws Exception {
@@ -56,7 +60,7 @@ public class UserService implements IUserService {
 
     @Override
     public User updatePassword(User user, String newPassword) {
-        user.setPassword(newPassword);
+        user.setPassword(passwordEncoder.encode(newPassword));
         return userRepo.save(user);
     }
 }

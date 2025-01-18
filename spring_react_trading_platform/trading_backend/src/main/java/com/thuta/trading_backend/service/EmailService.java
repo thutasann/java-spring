@@ -29,7 +29,7 @@ public class EmailService {
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
 
         String subject = "Verify OTP";
-        String text = "Yout OTP is : " + otp;
+        String text = "Your OTP is : " + otp;
 
         helper.setSubject(subject);
         helper.setText(text, true);
