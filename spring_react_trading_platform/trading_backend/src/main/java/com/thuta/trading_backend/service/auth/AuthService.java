@@ -22,7 +22,6 @@ import com.thuta.trading_backend.util.OtpUtils;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.transaction.Transactional;
 
 @Service
 public class AuthService implements IAuthService {
@@ -82,7 +81,6 @@ public class AuthService implements IAuthService {
     }
 
     @Override
-    @Transactional
     public AuthResponse signIn(LoginRequest request) throws Exception {
         if (request == null) {
             throw new IllegalArgumentException("Login Request cannot be null");
@@ -121,8 +119,32 @@ public class AuthService implements IAuthService {
         AuthResponse authResponse = new AuthResponse();
         authResponse.setJwt(jwt);
         authResponse.setStatus(true);
+        authResponse.setMessage("SignIn sucess");
 
         return authResponse;
+    }
+
+    @Override
+    public AuthResponse verifySignInOtp(String otp, String id) throws Exception {
+        if (otp == null || id == null) {
+            throw new IllegalArgumentException("Verify Request is invalid");
+        }
+
+        TwoFactorOTP twoFactorOTP = twoFactorOtpService.findById(id);
+
+        if (twoFactorOTP == null) {
+            throw new Exception("OTP not found");
+        }
+
+        if (twoFactorOtpService.verifyTwoFactorOtp(twoFactorOTP, otp)) {
+            AuthResponse authResponse = new AuthResponse();
+            authResponse.setMessage("Two factor authentication verified");
+            authResponse.setTwoFactorAuthEnabled(true);
+            authResponse.setJwt(twoFactorOTP.getJwt());
+            return authResponse;
+        }
+
+        throw new Exception("Invalid OTP");
     }
 
     /**
