@@ -67,8 +67,20 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public Order processOrder(Coin coin, double quantity, ORDER_TYPE orderType, User user) {
-        return null;
+    @Transactional
+    public Order processOrder(
+            Coin coin,
+            double quantity,
+            ORDER_TYPE orderType,
+            User user,
+            Asset asset)
+            throws Exception {
+        if (orderType.equals(ORDER_TYPE.BUY)) {
+            return this.buyAsset(coin, quantity, user, asset);
+        } else if (orderType.equals(ORDER_TYPE.SELL)) {
+            return this.sellAsset(coin, quantity, user, asset);
+        }
+        throw new Exception("Invalid Order Type");
     }
 
     @Override
