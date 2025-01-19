@@ -28,7 +28,7 @@ public class CoinController {
             @PathVariable int page) {
         try {
             List<Coin> coins = coinService.getCoinList(page);
-            return ResponseEntity.ok(new DataResponse("user profile by jwt", coins));
+            return ResponseEntity.ok(new DataResponse("coins list by market success", coins));
         } catch (Exception e) {
             return ResponseEntity.status(INTERNAL_SERVER_ERROR)
                     .body(new DataResponse("An unexpected error occurred", e.getMessage()));
