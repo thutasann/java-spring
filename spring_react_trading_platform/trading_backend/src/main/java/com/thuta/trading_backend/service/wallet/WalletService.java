@@ -31,6 +31,9 @@ public class WalletService implements IWalletService {
     @Override
     public Wallet addBalance(Wallet wallet, Long money) throws Exception {
         BigDecimal balanace = wallet.getBalance();
+        if (balanace == null) {
+            balanace = BigDecimal.ZERO;
+        }
         BigDecimal newBalanace = balanace.add(BigDecimal.valueOf(money));
         wallet.setBalance(newBalanace);
         return walletRepo.save(wallet);
@@ -47,19 +50,30 @@ public class WalletService implements IWalletService {
 
     @Override
     public Wallet walletToWalletTransfer(User sender, Wallet receiverWallet, Long amount) throws Exception {
+        if (amount == null || amount <= 0) {
+            throw new Exception("Amount is required to transfer");
+        }
 
-        Wallet senderWallet = new Wallet();
+        // get sender wallet
+        Wallet senderWallet = getUserWallet(sender);
 
-        if (senderWallet.getBalance().compareTo(BigDecimal.valueOf(amount)) < 0) {
+        // sender balance check
+        BigDecimal senderBalance = senderWallet.getBalance() != null
+                ? senderWallet.getBalance()
+                : BigDecimal.ZERO;
+        if (senderBalance.compareTo(BigDecimal.valueOf(amount)) < 0) {
             throw new Exception("Insufficient balance...");
         }
 
-        BigDecimal senderBalance = senderWallet.getBalance().subtract(BigDecimal.valueOf(amount));
-        senderWallet.setBalance(senderBalance);
+        // Deduct amount from sender's wallet
+        senderWallet.setBalance(senderBalance.subtract(BigDecimal.valueOf(amount)));
         walletRepo.save(senderWallet);
 
-        BigDecimal receiverBalance = receiverWallet.getBalance().add(BigDecimal.valueOf(amount));
-        receiverWallet.setBalance(receiverBalance);
+        // Add amount to receiver's wallet
+        BigDecimal receiverBalance = receiverWallet.getBalance() != null
+                ? receiverWallet.getBalance()
+                : BigDecimal.ZERO;
+        receiverWallet.setBalance(receiverBalance.add(BigDecimal.valueOf(amount)));
         walletRepo.save(receiverWallet);
 
         return senderWallet;
