@@ -18,9 +18,9 @@ public interface ICoinService {
 
     Coin findById(String coinId) throws Exception;
 
-    String searchCoin(String keyword);
+    String searchCoin(String keyword) throws Exception;
 
-    String getTop50CoinsByMarketCapRank(String market);
+    String getTop50CoinsByMarketCapRank() throws Exception;
 
-    String getTrendingCoins();
+    String getTreadingCoins() throws Exception;
 }
