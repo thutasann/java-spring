@@ -81,7 +81,7 @@ public class OrderController {
         }
     }
 
-    @GetMapping("")
+    @GetMapping("/")
     public ResponseEntity<DataResponse> getAllOrdersForUser(
             @RequestHeader("Authorization") String jwt,
             @RequestParam(required = false) ORDER_TYPE orderType,
