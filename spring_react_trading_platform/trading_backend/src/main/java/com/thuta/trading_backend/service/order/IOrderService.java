@@ -16,9 +16,9 @@ public interface IOrderService {
 
     List<Order> getAllOrdersOfUser(Long userId, ORDER_TYPE orderType, String assetSymbol) throws Exception;
 
-    Order processOrder(Coin coin, double quantity, ORDER_TYPE orderType, User user, Asset asset) throws Exception;
+    Order processOrder(Coin coin, double quantity, ORDER_TYPE orderType, User user) throws Exception;
 
-    Order buyAsset(Coin coin, double quantity, User user, Asset assetToBuy) throws Exception;
+    Order buyAsset(Coin coin, double quantity, User user) throws Exception;
 
-    Order sellAsset(Coin coin, double quantity, User user, Asset assetToSell) throws Exception;
+    Order sellAsset(Coin coin, double quantity, User user) throws Exception;
 }

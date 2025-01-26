@@ -72,20 +72,19 @@ public class OrderService implements IOrderService {
             Coin coin,
             double quantity,
             ORDER_TYPE orderType,
-            User user,
-            Asset asset)
+            User user)
             throws Exception {
         if (orderType.equals(ORDER_TYPE.BUY)) {
-            return this.buyAsset(coin, quantity, user, asset);
+            return this.buyAsset(coin, quantity, user);
         } else if (orderType.equals(ORDER_TYPE.SELL)) {
-            return this.sellAsset(coin, quantity, user, asset);
+            return this.sellAsset(coin, quantity, user);
         }
         throw new Exception("Invalid Order Type");
     }
 
     @Override
     @Transactional
-    public Order buyAsset(Coin coin, double quantity, User user, Asset assetToBuy) throws Exception {
+    public Order buyAsset(Coin coin, double quantity, User user) throws Exception {
         // check quantity
         if (quantity <= 0) {
             throw new Exception("Quantity should be >0");
@@ -111,53 +110,67 @@ public class OrderService implements IOrderService {
         // save order
         Order savedOrder = orderRepo.save(order);
 
-        // TODO : create asset
-        // create asset
-        // Asset createdAsset = assetService.createAsset(assetToBuy);
-        // createdAsset.setQuantity(quantity);
+        // create or update asset
+        Asset oldAsset = assetService.findAssetByUserIdAndCoinId(
+                order.getUser().getId(),
+                order.getOrderItem().getCoin().getId());
+
+        if (oldAsset == null) {
+            assetService.createAsset(user, orderItem.getCoin(), orderItem.getQuantity());
+        } else {
+            assetService.updateAsset(oldAsset.getId(), quantity);
+        }
 
         return savedOrder;
     }
 
     @Override
-    public Order sellAsset(Coin coin, double quantity, User user, Asset assetToSell) throws Exception {
+    public Order sellAsset(Coin coin, double quantity, User user) throws Exception {
         // check quantity
         if (quantity <= 0) {
             throw new Exception("Quantity should be >0");
         }
 
-        // get buy price, sell price
+        // get sell price
         double sellPrice = coin.getCurrentPrice();
-        double buyPrice = 0;
 
-        // create order item
-        OrderItem orderItem = this.createOrderItem(quantity, coin, buyPrice, sellPrice);
+        // get asset to sell
+        Asset assetToSell = assetService.findAssetByUserIdAndCoinId(user.getId(), coin.getId());
 
-        // create order
-        Order order = this.createOrder(user, orderItem, ORDER_TYPE.SELL);
+        if (assetToSell != null) {
+            // buy price
+            double buyPrice = assetToSell.getBuyPrice();
 
-        orderItem.setOrder(order);
+            // create order item
+            OrderItem orderItem = this.createOrderItem(quantity, coin, buyPrice, sellPrice);
 
-        if (assetToSell.getQuantity() >= quantity) {
-            order.setStatus(ORDER_STATUS.SUCCESS);
-            order.setOrderType(ORDER_TYPE.SELL);
+            // create order
+            Order order = this.createOrder(user, orderItem, ORDER_TYPE.SELL);
+            orderItem.setOrder(order);
 
-            Order savedOrder = orderRepo.save(order);
+            if (assetToSell.getQuantity() >= quantity) {
+                order.setStatus(ORDER_STATUS.SUCCESS);
+                order.setOrderType(ORDER_TYPE.SELL);
 
-            // pay order payment
-            walletService.payOrderPayment(order, user);
+                // save order
+                Order savedOrder = orderRepo.save(order);
 
-            // update asset
-            Asset updatedAsset = assetService.updateAsset(assetToSell.getId(),
-                    -quantity);
+                // pay order payment
+                walletService.payOrderPayment(order, user);
 
-            if (updatedAsset.getQuantity() * coin.getCurrentPrice() <= 1) {
-                assetService.deleteAsset(updatedAsset.getId());
+                // update asset
+                Asset updatedAsset = assetService.updateAsset(assetToSell.getId(),
+                        -quantity);
+
+                if (updatedAsset.getQuantity() * coin.getCurrentPrice() <= 1) {
+                    assetService.deleteAsset(updatedAsset.getId());
+                }
+
+                return savedOrder;
             }
-
-            return savedOrder;
+            throw new Exception("Insufficient quantity to sell");
         }
-        throw new Exception("Insufficient quantity to sell");
+        throw new Exception("Asset not found");
     }
 
     /**

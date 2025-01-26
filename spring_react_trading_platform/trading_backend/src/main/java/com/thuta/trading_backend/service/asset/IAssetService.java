@@ -20,5 +20,4 @@ public interface IAssetService {
     List<Asset> getUserAssets(Long userId);
 
     Asset findAssetByUserIdAndCoinId(Long userId, String coinId) throws Exception;
-
 }
