@@ -111,9 +111,10 @@ public class OrderService implements IOrderService {
         // save order
         Order savedOrder = orderRepo.save(order);
 
+        // TODO : create asset
         // create asset
-        Asset createdAsset = assetService.createAsset(assetToBuy);
-        createdAsset.setQuantity(quantity);
+        // Asset createdAsset = assetService.createAsset(assetToBuy);
+        // createdAsset.setQuantity(quantity);
 
         return savedOrder;
     }
