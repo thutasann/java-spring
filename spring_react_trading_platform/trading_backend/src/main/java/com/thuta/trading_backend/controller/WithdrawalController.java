@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.thuta.trading_backend.entity.User;
 import com.thuta.trading_backend.entity.Wallet;
@@ -23,7 +24,7 @@ import com.thuta.trading_backend.service.wallet.IWalletService;
 import com.thuta.trading_backend.service.wallet_transaction.IWalletTransactionService;
 import com.thuta.trading_backend.service.withdrawal.IWithDrawalService;
 
-@Controller
+@RestController
 @RequestMapping("${api.prefix}/withdrawal")
 public class WithdrawalController {
     @Autowired
