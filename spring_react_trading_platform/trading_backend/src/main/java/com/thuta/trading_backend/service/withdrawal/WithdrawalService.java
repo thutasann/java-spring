@@ -41,16 +41,16 @@ public class WithdrawalService implements IWithDrawalService {
             withdrawal1.setStatus(WITHDRAWAL_STATUS.PENDING);
         }
 
-        return withdrawal1;
+        return withDrawalRepo.save(withdrawal1);
     }
 
     @Override
     public List<Withdrawal> getUsersWithdrawalHistory(User user) {
-        throw new UnsupportedOperationException("Unimplemented method 'getUsersWithdrawalHistory'");
+        return withDrawalRepo.findByUserId(user.getId());
     }
 
     @Override
     public List<Withdrawal> getAllWithdrawalRequest() {
-        throw new UnsupportedOperationException("Unimplemented method 'getAllWithdrawalRequest'");
+        return withDrawalRepo.findAll();
     }
 }
