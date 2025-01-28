@@ -22,7 +22,7 @@ import com.thuta.trading_backend.service.watchlist.IWatchListService;
 
 @RestController
 @RequestMapping("${api.prefix}/watchlist")
-public class WatchListCOntroller {
+public class WatchListController {
     @Autowired
     private IWatchListService watchListService;
 
