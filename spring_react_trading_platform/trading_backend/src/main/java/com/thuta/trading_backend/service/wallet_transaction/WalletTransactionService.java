@@ -7,6 +7,7 @@ import com.thuta.trading_backend.repository.WalletTransactionRepository;
 
 @Service
 public class WalletTransactionService implements IWalletTransactionService {
+    @SuppressWarnings("unused")
     @Autowired
     private WalletTransactionRepository walletTransactionRepo;
 }
