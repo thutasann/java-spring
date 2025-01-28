@@ -8,3 +8,4 @@
 | Spring Boot Shopping Cart            | [Source](./shopping_cart)                   | Spring Boot, Spring Security, JWT |
 | Spring Boot React Project Management | [Source](./spring_react_poject_management/) | Spring Boot, Reactjs              |
 | Spring Boot React Trading Platform   | [Source](./spring_react_trading_platform/)  | Spring Boot, Reactjs              |
+| SQL                                  | [Source](./sql)                             | SQL                               |

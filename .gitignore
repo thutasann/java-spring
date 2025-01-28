@@ -73,7 +73,6 @@ application-*.yml
 
 # Ignore database files
 *.db
-*.sql
 *.mv.db
 *.h2.db
 
