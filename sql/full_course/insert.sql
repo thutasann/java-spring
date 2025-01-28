@@ -7,3 +7,8 @@ SELECT * FROM employees;
 
 INSERT INTO employees (employee_id, first_name, last_name)
 VALUES (5, "aung", "aung");
+
+INSERT INTO employees (employee_id, first_name, last_name)
+VALUES (6, "temp", "user");
+
+SELECT * FROM employees;
