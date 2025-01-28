@@ -20,7 +20,6 @@ import com.thuta.trading_backend.entity.User;
 import com.thuta.trading_backend.entity.Wallet;
 import com.thuta.trading_backend.entity.WalletTransaction;
 import com.thuta.trading_backend.response.DataResponse;
-import com.thuta.trading_backend.response.PaymentResponse;
 import com.thuta.trading_backend.service.order.IOrderService;
 import com.thuta.trading_backend.service.payment_order.IPaymentOrderService;
 import com.thuta.trading_backend.service.user.IUserService;

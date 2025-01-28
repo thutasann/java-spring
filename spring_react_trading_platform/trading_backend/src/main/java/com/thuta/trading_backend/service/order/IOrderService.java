@@ -2,7 +2,6 @@ package com.thuta.trading_backend.service.order;
 
 import java.util.List;
 
-import com.thuta.trading_backend.entity.Asset;
 import com.thuta.trading_backend.entity.Coin;
 import com.thuta.trading_backend.entity.Order;
 import com.thuta.trading_backend.entity.OrderItem;
