@@ -1,1 +1,0 @@
-CREATE DATABASE MySQL_Crash;
