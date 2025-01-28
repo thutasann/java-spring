@@ -9,6 +9,9 @@ import com.razorpay.Payment;
 import com.razorpay.PaymentLink;
 import com.razorpay.RazorpayClient;
 import com.razorpay.RazorpayException;
+import com.stripe.Stripe;
+import com.stripe.model.checkout.Session;
+import com.stripe.param.checkout.SessionCreateParams;
 import com.thuta.trading_backend.entity.PaymentOrder;
 import com.thuta.trading_backend.entity.User;
 import com.thuta.trading_backend.enums.PAYMENT_METHOD;
@@ -118,6 +121,38 @@ public class PaymentOrderService implements IPaymentOrderService {
 
     @Override
     public PaymentResponse createStripePaymentLink(User user, Long amount, Long orderId) throws Exception {
-        return null;
+        Stripe.apiKey = stripeSecretKey;
+
+        SessionCreateParams sessionCreateParams = SessionCreateParams.builder()
+                .addPaymentMethodType(SessionCreateParams.PaymentMethodType.CARD)
+                .setMode(SessionCreateParams.Mode.PAYMENT)
+                .setSuccessUrl("http://localhost:5173/wallet?order_id=" + orderId)
+                .setCancelUrl("http://localhost:5173/payment/cancel")
+                .addLineItem(
+                    SessionCreateParams.LineItem.builder()
+                        .setQuantity(1L)
+                        .setPriceData(
+                            SessionCreateParams.LineItem.PriceData.builder()
+                                .setCurrency("usd")
+                                .setUnitAmount(amount * 100)
+                                .setProductData(
+                                    SessionCreateParams.LineItem.PriceData.ProductData.builder()
+                                        .setName("Top up wallet")
+                                        .build()
+                                )
+                                .build()
+                        )
+                        .build()
+                )
+                .build();
+
+        Session session = Session.create(sessionCreateParams);
+        System.out.println("session: " + session);
+
+        PaymentResponse paymentResponse = new PaymentResponse();
+        paymentResponse.setPayment_url(session.getUrl());
+        paymentResponse.setPayment_id(session.getId());
+
+        return paymentResponse;
     }
 }
