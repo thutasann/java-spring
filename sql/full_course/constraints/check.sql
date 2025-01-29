@@ -8,3 +8,5 @@ VALUES(7, "myo", "myo", "myo@gmail.com", 3, "2025-01-01");
 
 ALTER TABLE employees
 DROP CHECK chk_hourly_pay;
+
+SELECT * FROM employees;
