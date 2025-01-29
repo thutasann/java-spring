@@ -22,5 +22,7 @@ CREATE TABLE transactions (
 
 SELECT * FROM transactions;
 
+DROP TABLE transactions;
+
 INSERT INTO transactions (transaction_id, amount)
 VALUES (1, 10.0);
