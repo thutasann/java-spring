@@ -42,6 +42,12 @@ VALUES (4.99, 3),
        (4.99, 1),
        (2.33, 1);
 
+INSERT INTO transactions (amount, customer_id)
+VALUES (1.00, NULL);
+
+INSERT INTO customers (first_name, last_name)
+VALUES ("Poppy", "Puff");
+
 SELECT * FROM transactions;
 SELECT * FROM customers;
 
