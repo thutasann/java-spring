@@ -42,3 +42,11 @@ New window: [5, 1, 3] → Sum = 7 - 1 + 3 = 9 (Max)
 // Remove 5, add 2
 New window: [1, 3, 2] → Sum = 9 - 5 + 2 = 6
 ```
+
+---
+
+## Variable-Sized Sliding Window
+
+- Expand (end++): Add elements to sum until sum >= target.
+- Shrink (start++): Remove elements from the left to minimize the window size while keeping sum ≥ target.
+- Update the minLength whenever a valid subarray is found.

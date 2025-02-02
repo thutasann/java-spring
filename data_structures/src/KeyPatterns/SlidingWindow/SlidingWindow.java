@@ -15,6 +15,7 @@ public class SlidingWindow {
         WindowSlideSample();
         maxSumTwoNestedLoop();
         maxSumOptmized();
+        VariableSizedSlideWindow.Examples();
     }
 
     public static void maxSumOptmized() {
