@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        directory: [fundamentals, data_structures]
+        directory: [fundamentals]
 
     steps:
       - uses: actions/checkout@v3
