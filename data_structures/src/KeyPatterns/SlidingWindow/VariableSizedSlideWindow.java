@@ -1,5 +1,7 @@
 package KeyPatterns.SlidingWindow;
 
+import java.util.HashSet;
+
 /**
  * A variable-sized sliding window dynamically expands and shrinks based on
  * conditions instead of having a fixed length like in the standard sliding
@@ -14,6 +16,31 @@ public class VariableSizedSlideWindow {
     public static void Examples() {
         largestSubArraySum();
         smallestSubArrayWithSum();
+        longestSubStringLength();
+    }
+
+    /**
+     * Longest SubString Length
+     * - Input: "abcabcbb"
+     * - Valid substrings: "abc", "bca", "cab", "abc", etc.
+     * - Output: 3 ("abc" or "bca" or "cab")
+     */
+    public static void longestSubStringLength() {
+        String s = "abcabcbb";
+        System.out.println("\n(Variable Sized) Longest SubString Length ==> ");
+        int start = 0, maxLength = 0;
+        HashSet<Character> window = new HashSet<>();
+
+        for (int end = 0; end < s.length(); end++) {
+            while (window.contains(s.charAt(end))) {
+                window.remove(s.charAt(start));
+                start++;
+            }
+            window.add(s.charAt(end));
+            maxLength = Math.max(maxLength, end - start + 1);
+        }
+
+        System.out.println("maxLength ==> " + maxLength);
     }
 
     public static void smallestSubArrayWithSum() {

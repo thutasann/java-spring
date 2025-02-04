@@ -8,14 +8,15 @@ public class SlidingWindow {
      */
     public static void Examples() {
         System.out.println("\nSliding Window");
-        PrintSubArrays();
-        SubArrayExtractInJava();
-        PrintSubString();
-        ExtractSubString();
-        WindowSlideSample();
-        maxSumTwoNestedLoop();
-        maxSumOptmized();
-        VariableSizedSlideWindow.Examples();
+        // PrintSubArrays();
+        // SubArrayExtractInJava();
+        // PrintSubString();
+        // ExtractSubString();
+        // WindowSlideSample();
+        // maxSumTwoNestedLoop();
+        // maxSumOptmized();
+        // VariableSizedSlideWindow.Examples();
+        Practice.Examples();
     }
 
     public static void maxSumOptmized() {
