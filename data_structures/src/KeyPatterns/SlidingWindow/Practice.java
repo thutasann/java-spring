@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.TreeMap;
 
 /**
- * Sliding Window Practice
+ * Sliding Window and Two Pointers Practice
  */
 public class Practice {
     public static void Examples() {
@@ -18,6 +18,30 @@ public class Practice {
         mergeTwoSortedArrays();
         moveZeroToEnd();
         System.out.println("\n(Two Pointers) TwoSum Sorted ==> " + Arrays.toString(TwoSumSorted()));
+        maxArea();
+    }
+
+    /**
+     * Container with Most Water
+     */
+    public static void maxArea() {
+        System.out.println("\n(Two Pointers) Container with most water ==> ");
+        int[] height = { 1, 8, 6, 2, 5, 4, 8, 3, 7 };
+        int left = 0, right = height.length - 1;
+        int maxArea = 0;
+
+        while (left < right) {
+            int h = Math.min(height[left], height[right]);
+            int width = right - left;
+            maxArea = Math.max(maxArea, h * width);
+
+            if (height[left] < height[right])
+                left++;
+            else
+                right--;
+        }
+
+        System.out.println("Answer => " + maxArea);
     }
 
     /**
