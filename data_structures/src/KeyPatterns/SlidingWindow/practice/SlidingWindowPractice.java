@@ -6,11 +6,40 @@ public class SlidingWindowPractice {
     public static void main(String[] args) {
         System.out.println("Sliding Window Practice ==> ");
 
-        int[] arr = { 2, 1, 5, 1, 3, 2 };
-        int k = 3;
-        System.out.println("Maximum sum of a subarray of size " + k + " is " + maxSumSubarray(arr, k));
+        System.out.println(
+                "Maximum sum of a subarray of size " + 3 + " is " + maxSumSubarray(new int[] { 2, 1, 5, 1, 3, 2 }, 3));
 
         System.out.println("Longest SubString " + longestSubstringWithoutRepeating("abcabcbb"));
+
+        System.out.println("Minimum size subarray sum: " + minSubArrayLen(7, new int[] { 2, 3, 1, 2, 4, 3 }));
+    }
+
+    /**
+     * `minLength` to track the smallest length found
+     * `windowSum` to store the sum of the current window
+     * `windowStart` to point to the start of the current window
+     * `windowEnd` to iterate over the array and add each element to `windowSum`
+     * while `windowSum` is greater than or equal to `s`, calcuate the current
+     * window size and update `minLength` if it's smaller
+     * subtract the element at `windowStart` from `windowSum` and increment the
+     * `windowStart` to shrink the window
+     */
+    private static int minSubArrayLen(int s, int[] nums) {
+        int minLength = Integer.MAX_VALUE;
+        int windowSum = 0;
+        int windowStart = 0;
+
+        for (int windowEnd = 0; windowEnd < nums.length; windowEnd++) {
+            windowSum += nums[windowEnd];
+
+            while (windowSum >= s) {
+                minLength = Math.min(minLength, windowEnd - windowStart + 1);
+                windowSum -= nums[windowStart];
+                windowStart++;
+            }
+        }
+
+        return minLength == Integer.MAX_VALUE ? 0 : minLength;
     }
 
     /**
@@ -68,4 +97,5 @@ public class SlidingWindowPractice {
 
         return maxLength;
     }
+
 }
