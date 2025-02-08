@@ -32,3 +32,37 @@ CREATE TABLE Orders(
     total_price DECIMAL(10, 2) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE Order_Items (
+    id SERIAL PRIMARY KEY,
+    order_id INT NOT NULL REFERENCES Orders(id) ON DELETE CASCADE,
+    product_id INT NOT NULL REFERENCES Products(id),
+    quantity INT NOT NULL CHECK (quantity > 0),
+    price DECIMAL(10,2) NOT NULL
+);
+
+CREATE TABLE Payments (
+    id SERIAL PRIMARY KEY,
+    order_id INT UNIQUE NOT NULL REFERENCES Orders(id),
+    amount DECIMAL(10,2) NOT NULL,
+    status VARCHAR(50) CHECK (status IN ('pending', 'completed', 'failed')) DEFAULT 'pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Shipments (
+    id SERIAL PRIMARY KEY,
+    order_id INT UNIQUE NOT NULL REFERENCES Orders(id),
+    tracking_number VARCHAR(255) UNIQUE,
+    status VARCHAR(50) CHECK (status IN ('shipped', 'in transit', 'delivered', 'failed')) DEFAULT 'shipped',
+    estimated_delivery DATE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE Reviews (
+    id SERIAL PRIMARY KEY,
+    customer_id INT NOT NULL REFERENCES Users(id),
+    product_id INT NOT NULL REFERENCES Products(id),
+    rating INT CHECK (rating BETWEEN 1 AND 5),
+    comment TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
