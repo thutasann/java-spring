@@ -1,0 +1,31 @@
+{
+  "env": { "browser": true, "es2020": true },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:@next/next/recommended"
+  ],
+  "plugins": ["import", "unused-imports", "eslint-plugin-unused-imports"],
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/ban-types": "warn",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/no-non-null-asserted-optional-chain": "warn",
+    "@typescript-eslint/no-unused-vars": "off",
+    "no-case-declarations": "warn",
+    "no-compare-neg-zero": "warn",
+    "no-constant-condition": "warn",
+    "no-empty-pattern": "warn",
+    "no-extra-semi": "off",
+    "no-unsafe-optional-chaining": "warn",
+    "no-useless-escape": "off",
+    "no-var": "warn",
+    "prefer-const": "off",
+    "react-hooks/rules-of-hooks": "warn",
+    "react/react-in-jsx-scope": "off", // React 17+ JSX transform
+    "react/jsx-uses-react": "off" // React 17+ JSX transform
+  }
+}

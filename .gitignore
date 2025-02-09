@@ -85,3 +85,8 @@ tmp/
 node_modules
 yarn.lock
 dist
+
+# Nextjs
+.next/
+out/
+dist/
