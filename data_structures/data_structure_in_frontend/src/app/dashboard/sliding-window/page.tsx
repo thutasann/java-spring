@@ -1,17 +1,17 @@
-import PageContainer from '@/components/molecules/layout/page-container';
-import CategoriesTable from '@/components/molecules/tables/sliding-window/search-filtering';
-import { Metadata } from 'next';
+import SearchFiltering from '@/components/molecules/contents/sliding-window/search-filtering'
+import PageContainer from '@/components/molecules/layout/page-container'
+import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Sliding Window',
-};
+}
 
 function SlidingWindow() {
   return (
     <PageContainer>
-      <CategoriesTable />
+      <SearchFiltering />
     </PageContainer>
-  );
+  )
 }
 
-export default SlidingWindow;
+export default SlidingWindow
