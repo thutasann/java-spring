@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 function SearchAndFiltering() {
   return (
-    <PageContainer>
+    <PageContainer scrollable>
       <SearchFilteringTable />
     </PageContainer>
   )
