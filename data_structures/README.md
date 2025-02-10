@@ -4,6 +4,8 @@ This section contains Data Structure and Algorithms in Java, Typescript and Fron
 
 ## Contents
 
+- [Sliding Window](./src/KeyPatterns/SlidingWindow/README.md)
+
 ## Docs
 
 - [key-patterns](./docs/keys-patterns.md)
