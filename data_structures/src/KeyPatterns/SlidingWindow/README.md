@@ -6,6 +6,14 @@
 
 1. [Maximum Average Subarray I](https://leetcode.com/problems/maximum-average-subarray-i/)
 2. [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+3. [Find Pivot Index](https://leetcode.com/problems/find-pivot-index/)
+4. [Subarray Sum Equals K (Easy version)](https://leetcode.com/problems/subarray-sum-equals-k/) _(Hint: Prefix Sum)_
+5. [Number of Good Pairs](https://leetcode.com/problems/number-of-good-pairs/)
+6. [Contains Duplicate II](https://leetcode.com/problems/contains-duplicate-ii/)
+7. [Maximum Number of Vowels in a Substring of Given Length](https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length/)
+8. [Find the Highest Altitude](https://leetcode.com/problems/find-the-highest-altitude/)
+9. [Check If All 1’s Are at Least K Places Away](https://leetcode.com/problems/check-if-all-1s-are-at-least-k-places-away/)
+10. [Longest Continuous Increasing Subsequence](https://leetcode.com/problems/longest-continuous-increasing-subsequence/)
 
 ## **Medium**
 
