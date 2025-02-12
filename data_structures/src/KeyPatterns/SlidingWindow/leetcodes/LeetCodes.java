@@ -3,6 +3,7 @@ package KeyPatterns.SlidingWindow.leetcodes;
 import KeyPatterns.SlidingWindow.leetcodes.easy.BestTimeToBuyAndSellStock;
 import KeyPatterns.SlidingWindow.leetcodes.easy.FindPivotIndex;
 import KeyPatterns.SlidingWindow.leetcodes.easy.MaximumAverageSubArrayI;
+import KeyPatterns.SlidingWindow.leetcodes.easy.SubarraySumEqualsK;
 
 public class LeetCodes {
     public static void main(String[] args) {
@@ -10,5 +11,6 @@ public class LeetCodes {
         MaximumAverageSubArrayI.main();
         BestTimeToBuyAndSellStock.main();
         FindPivotIndex.main();
+        SubarraySumEqualsK.main();
     }
 }
