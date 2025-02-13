@@ -1,8 +1,11 @@
 package KeyPatterns.SlidingWindow.leetcodes;
 
 import KeyPatterns.SlidingWindow.leetcodes.easy.BestTimeToBuyAndSellStock;
+import KeyPatterns.SlidingWindow.leetcodes.easy.ContainsDuplicateII;
 import KeyPatterns.SlidingWindow.leetcodes.easy.FindPivotIndex;
 import KeyPatterns.SlidingWindow.leetcodes.easy.MaximumAverageSubArrayI;
+import KeyPatterns.SlidingWindow.leetcodes.easy.MaximumVowelsInSubstring;
+import KeyPatterns.SlidingWindow.leetcodes.easy.NumberOfGoodPairs;
 import KeyPatterns.SlidingWindow.leetcodes.easy.SubarraySumEqualsK;
 
 public class LeetCodes {
@@ -12,5 +15,8 @@ public class LeetCodes {
         BestTimeToBuyAndSellStock.main();
         FindPivotIndex.main();
         SubarraySumEqualsK.main();
+        NumberOfGoodPairs.main();
+        ContainsDuplicateII.main();
+        MaximumVowelsInSubstring.main();
     }
 }

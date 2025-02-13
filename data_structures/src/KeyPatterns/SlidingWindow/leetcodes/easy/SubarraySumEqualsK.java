@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public class SubarraySumEqualsK {
     public static void main() {
-        System.out.println("\nSubarray Sum Equals K");
+        System.out.println("\nSubarray Sum Equals K ==> ");
         int[] nums = { 1, 1, 1 };
         int k = 2;
         System.out.println("Total Subarrays: " + subarraySum(nums, k));
@@ -22,6 +22,7 @@ public class SubarraySumEqualsK {
         prefixSumCounts.put(0, 1);
         int prefixSum = 0;
         int count = 0;
+
         for (int num : nums) {
             prefixSum += num;
 
