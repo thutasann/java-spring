@@ -1,17 +1,18 @@
-'use client'
+'use client';
 
-import { PageHeading } from '@/components/atoms/page-heading'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { PageEndpoints } from '@/lib/constants/page-endpoint'
-import { Fragment } from 'react'
-import LiveSearch from './live-search'
-import SubStringSearch from './substring-search'
+import { PageHeading } from '@/components/atoms/page-heading';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { PageEndpoints } from '@/lib/constants/page-endpoint';
+import { Fragment } from 'react';
+import LiveSearch from './live-search';
+import SubStringSearch from './substring-search';
+import ImageCarousel from './img-carousel';
 
 const breadcrumbItems = [
   { title: 'Dashboard', link: PageEndpoints.dashboard },
   { title: 'Sliding Window', link: PageEndpoints.slidingWindow.index },
   { title: 'Search and Filtering', link: PageEndpoints.slidingWindow.searchAndFiltering },
-]
+];
 
 function SearchFiltering() {
   return (
@@ -26,6 +27,7 @@ function SearchFiltering() {
           <TabsList>
             <TabsTrigger value='find-substrings'>Find SubStrings</TabsTrigger>
             <TabsTrigger value='live-search'>Live Search</TabsTrigger>
+            <TabsTrigger value='carrousel'>Image Carrousel</TabsTrigger>
           </TabsList>
           <TabsContent value='find-substrings' className='mt-8 w-full rounded-md border p-4'>
             <SubStringSearch />
@@ -33,10 +35,13 @@ function SearchFiltering() {
           <TabsContent value='live-search' className='mt-8 w-full rounded-md border p-4'>
             <LiveSearch />
           </TabsContent>
+          <TabsContent value='carrousel' className='mt-8 w-full rounded-md border p-4'>
+            <ImageCarousel />
+          </TabsContent>
         </Tabs>
       </main>
     </Fragment>
-  )
+  );
 }
 
-export default SearchFiltering
+export default SearchFiltering;

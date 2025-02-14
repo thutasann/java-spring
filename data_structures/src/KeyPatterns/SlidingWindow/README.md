@@ -12,8 +12,7 @@
 6. [Contains Duplicate II](https://leetcode.com/problems/contains-duplicate-ii/)
 7. [Maximum Number of Vowels in a Substring of Given Length](https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length/)
 8. [Find the Highest Altitude](https://leetcode.com/problems/find-the-highest-altitude/)
-9. [Check If All 1’s Are at Least K Places Away](https://leetcode.com/problems/check-if-all-1s-are-at-least-k-places-away/)
-10. [Longest Continuous Increasing Subsequence](https://leetcode.com/problems/longest-continuous-increasing-subsequence/)
+9. [Longest Continuous Increasing Subsequence](https://leetcode.com/problems/longest-continuous-increasing-subsequence/)
 
 ## **Medium**
 
@@ -23,6 +22,16 @@
 6. [Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement/)
 7. [Fruit Into Baskets](https://leetcode.com/problems/fruit-into-baskets/)
 8. [Find All Anagrams in a String](https://leetcode.com/problems/find-all-anagrams-in-a-string/)
+9. [Binary Subarrays With Sum](https://leetcode.com/problems/binary-subarrays-with-sum/)
+10. [Subarrays with K Different Integers](https://leetcode.com/problems/subarrays-with-k-different-integers/)
+11. [Max Consecutive Ones III](https://leetcode.com/problems/max-consecutive-ones-iii/)
+12. [Replace the Substring for Balanced String](https://leetcode.com/problems/replace-the-substring-for-balanced-string/)
+13. [Longest Subarray of 1's After Deleting One Element](https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/)
+14. [Subarray Product Less Than K](https://leetcode.com/problems/subarray-product-less-than-k/)
+15. [Count Number of Nice Subarrays](https://leetcode.com/problems/count-number-of-nice-subarrays/)
+16. [Max Number of K-Sum Pairs](https://leetcode.com/problems/max-number-of-k-sum-pairs/)
+17. [Maximum Points You Can Obtain from Cards](https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/)
+18. [Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit](https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/)
 
 ## **Hard**
 

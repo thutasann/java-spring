@@ -3,6 +3,8 @@ package KeyPatterns.SlidingWindow.leetcodes;
 import KeyPatterns.SlidingWindow.leetcodes.easy.BestTimeToBuyAndSellStock;
 import KeyPatterns.SlidingWindow.leetcodes.easy.ContainsDuplicateII;
 import KeyPatterns.SlidingWindow.leetcodes.easy.FindPivotIndex;
+import KeyPatterns.SlidingWindow.leetcodes.easy.HighestAltitude;
+import KeyPatterns.SlidingWindow.leetcodes.easy.LongestContinuousIncreasingSubsequence;
 import KeyPatterns.SlidingWindow.leetcodes.easy.MaximumAverageSubArrayI;
 import KeyPatterns.SlidingWindow.leetcodes.easy.MaximumVowelsInSubstring;
 import KeyPatterns.SlidingWindow.leetcodes.easy.NumberOfGoodPairs;
@@ -18,5 +20,7 @@ public class LeetCodes {
         NumberOfGoodPairs.main();
         ContainsDuplicateII.main();
         MaximumVowelsInSubstring.main();
+        HighestAltitude.main();
+        LongestContinuousIncreasingSubsequence.main();
     }
 }
