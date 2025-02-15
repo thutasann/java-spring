@@ -1,4 +1,4 @@
-package Queues;
+package DataStructures.Queues;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -6,7 +6,8 @@ import java.util.Queue;
 public class QueueSamples {
     public void SampleOne() {
         System.out.println("\n===> Queue Sample One");
-        Queue<String> queue = new LinkedList<String>(){};
+        Queue<String> queue = new LinkedList<String>() {
+        };
         queue.offer("Karen");
         queue.offer("Chad");
         queue.offer("Steve");

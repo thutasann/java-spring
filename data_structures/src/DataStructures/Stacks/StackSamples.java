@@ -1,10 +1,11 @@
-package Stacks;
+package DataStructures.Stacks;
 
 import java.util.Stack;
 
 public class StackSamples {
     /**
      * Stack Sample One
+     * 
      * @apiNote - This is stack sample usage one
      */
     public void SampleOne() {

@@ -1,17 +1,19 @@
-package LinkedList;
+package DataStructures.LinkedList;
 
 import java.util.LinkedList;
 
 /**
  * Browser History
+ * 
  * @description
- * - Stores the URLs visited. You can go back and forth using a doubly linked list.
+ *              - Stores the URLs visited. You can go back and forth using a
+ *              doubly linked list.
  */
 public class BrowserHistory {
     private LinkedList<String> history = new LinkedList<String>();
     private int currentIndex = -1;
 
-    public void visit(String url){
+    public void visit(String url) {
         while (history.size() > currentIndex + 1) {
             history.removeLast();
         }

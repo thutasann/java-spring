@@ -1,4 +1,4 @@
-package SearchAlgorithms;
+package Algorithms.SearchAlgorithms;
 
 public class SearchAlgorithmsUsages {
 

@@ -1,4 +1,4 @@
-package Shared;
+package DataStructures.Shared;
 
 public class DynamicArray {
     private int size;

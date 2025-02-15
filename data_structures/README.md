@@ -4,10 +4,13 @@ This section contains Data Structure and Algorithms in Java, Typescript and Fron
 
 ## Contents
 
+- [Data Structures](./src/DataStructures)
+- [Algorithms](./src/Algorithms)
 - [Sliding Window](./src/KeyPatterns/SlidingWindow/README.md)
+- [NeetCode 150](./neetcode_150/)
+- [Javascript Questions](./js_questions)
 
 ## Docs
 
 - [key-patterns](./docs/keys-patterns.md)
 - [js-questions](./docs/javascript-common-questions.md)
-- [neetcode-150](./neetcode_150/)

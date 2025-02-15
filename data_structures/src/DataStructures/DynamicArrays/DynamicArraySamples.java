@@ -1,6 +1,6 @@
-package DynamicArrays;
+package DataStructures.DynamicArrays;
 
-import Shared.DynamicArray;
+import DataStructures.Shared.DynamicArray;
 
 public class DynamicArraySamples {
     public void SampleOne() {

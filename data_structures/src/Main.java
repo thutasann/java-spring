@@ -1,10 +1,10 @@
-import DynamicArrays.DynamicArraySamples;
-import LinkedList.LinkedListSamples;
-import Queues.PriorityQueueSamples;
-import Queues.QueueSamples;
-import SearchAlgorithms.SearchAlgorithmsUsages;
-import Stacks.StackSamples;
-import Stacks.UndoRedoManager;
+import Algorithms.SearchAlgorithms.SearchAlgorithmsUsages;
+import DataStructures.DynamicArrays.DynamicArraySamples;
+import DataStructures.LinkedList.LinkedListSamples;
+import DataStructures.Queues.PriorityQueueSamples;
+import DataStructures.Queues.QueueSamples;
+import DataStructures.Stacks.StackSamples;
+import DataStructures.Stacks.UndoRedoManager;
 
 public class Main {
     public static void main(String[] args) {
