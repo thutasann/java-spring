@@ -10,6 +10,7 @@ This section contains Data Structure and Algorithms in Java, Typescript and Fron
 - [Prefix](./src/KeyPatterns/Prefix/README.md)
 - [NeetCode 150](./neetcode_150/)
 - [Javascript Questions](./js_questions)
+- [Time and Space Complexity](./time_space_complexity/README.md)
 
 ## Docs
 
