@@ -15,4 +15,6 @@ This section contains Data Structure and Algorithms in Java, Typescript and Fron
 ## Docs
 
 - [key-patterns](./docs/keys-patterns.md)
+- [most-asked-techniques](./docs/most-asked-techniques.md)
+- [how-to-master](./docs/how-to-master.md)
 - [js-questions](./docs/javascript-common-questions.md)
