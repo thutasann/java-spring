@@ -1,4 +1,4 @@
-import { fetchData } from './chaining';
+import { fetchData } from '../chaining/chaining';
 
 const asyncFunction = async () => {
   try {
