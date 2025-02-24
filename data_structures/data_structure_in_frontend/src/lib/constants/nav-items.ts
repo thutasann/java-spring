@@ -1,4 +1,4 @@
-import { NavItemWithOptionalChildren } from '@/dto/types/ui.type'
+import { NavItemWithOptionalChildren } from '@/dto/types/ui.type';
 
 /** NAV_ITEMS */
 export const navItems: NavItemWithOptionalChildren[] = [
@@ -29,4 +29,10 @@ export const navItems: NavItemWithOptionalChildren[] = [
       },
     ],
   },
-]
+  {
+    title: 'Graph',
+    icon: 'billing',
+    label: 'graph',
+    href: '/dashboard/graph',
+  },
+];

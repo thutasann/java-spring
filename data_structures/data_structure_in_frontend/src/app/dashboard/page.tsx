@@ -9,6 +9,10 @@ const data_structures_and_algorithms = [
     title: 'Sliding Window',
     href: '/dashboard/sliding-window/search-and-filtering',
   },
+  {
+    title: 'Graph',
+    href: '/dashboard/graph',
+  },
 ];
 
 export default function DashboardPage() {

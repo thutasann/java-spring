@@ -16,7 +16,6 @@ type SidebarProps = {
 
 export default function Sidebar({ className }: SidebarProps) {
   const [{ isMinimized }, setSidebarState] = useRecoilState(SidebarState);
-  const { theme } = useTheme();
 
   const handleToggle = () => {
     setSidebarState((prev) => {

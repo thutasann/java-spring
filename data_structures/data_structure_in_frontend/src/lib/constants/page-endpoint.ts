@@ -9,9 +9,12 @@ export const PageEndpoints = {
     searchAndFiltering: '/dashboard/sliding-window/search-and-filtering',
     domOptimization: '/dashboard/sliding-window/dom-optimization',
   },
-}
+  graph: {
+    index: '/dashboard/graph',
+  },
+};
 
 /**
  * Page Endpoint Type
  */
-export type PageEndpointProps = typeof PageEndpoints
+export type PageEndpointProps = typeof PageEndpoints;
