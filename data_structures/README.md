@@ -15,6 +15,7 @@ This section contains Data Structure and Algorithms in Java, Typescript and Fron
 - [Sliding Window](./src/KeyPatterns/SlidingWindow/README.md)
 - [Prefix](./src/KeyPatterns/Prefix/README.md)
 - [Hashes](./src/KeyPatterns/Hashes/README.md)
+- [Queue](./src/KeyPatterns/Queue/README.md)
 
 ## Docs
 
