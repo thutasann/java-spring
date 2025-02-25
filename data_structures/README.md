@@ -1,14 +1,14 @@
-# Java Data Structures and Algorithms
+# Java Data Structures and Algorithms and Javascript DeepDive
 
 This section contains Data Structure and Algorithms in Java, Typescript and Frontend (Reactjs).
 
 ## Contents
 
 - [Data Structures](./src/DataStructures)
-- [Algorithms](./src/Algorithms)
-- [NeetCode 150](./neetcode_150/)
+- [Algorithms](./src/Algorithms/README.md)
+- [NeetCode 150](./src/neetcode_150/README.md)
 - [Javascript Questions](./js_questions)
-- [Time and Space Complexity](./time_space_complexity/README.md)
+- [Time and Space Complexity](./src/TimeSpaceComplexity/README.md)
 
 **Patterns**
 
